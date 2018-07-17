@@ -3,7 +3,7 @@ function [scores,group,stats] = plotmeasure(listname,measure,bandidx,varargin)
 param = finputcheck(varargin, {
     'group', 'string', [], 'crsdiag'; ...
     'face', 'string', [], ''; ...
-    'groupnames', 'cell', {}, {'UWS','MCS-','MCS+','EMCS','LIS','CTRL'}; ...
+    'groupnames', 'cell', {}, {'UWS','MCS-','MCS+','EMCS','LIS','CTRL'}; ...newpatlist
     'changroup', 'string', [], 'allchan'; ...
     'changroup2', 'string', [], 'allchan'; ...
     'xlabel', 'string', [], ''; ...
@@ -31,6 +31,12 @@ loadcovariates
 
 load(sprintf('%s/groupdata_%s.mat',filepath,listname),'allcoh');
 load(sprintf('sortedlocs_%d.mat',size(allcoh,3)));
+if strcmp(param.changroup,'allchan')
+    param.changroup = sprintf('%s_%d',param.changroup,size(allcoh,3));
+end
+if strcmp(param.changroup2,'allchan')
+    param.changroup2 = sprintf('%s_%d',param.changroup2,size(allcoh,3));
+end
 
 groupvar = eval(param.group);
 

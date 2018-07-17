@@ -1,7 +1,7 @@
 function [combprob,groupnames] = plotclass(basename,varargin)
 
 param = finputcheck(varargin, {
-    'nclsyfyrs', 'real', [], []; ...
+    'nclsyfyrs', 'real', [], 50; ...
     });
 
 loadpaths
@@ -87,10 +87,10 @@ for g = 1:numgroups
     plot(combprob(:,g),'LineWidth',2,'Color',colorlist(g,:),...
         'DisplayName',sprintf('p(%s) Combined',groupnames{g}));
 end
-for g = 1:numgroups
-    plot(indprob(g,:),'LineWidth',0.5,'LineStyle','-.','Color',colorlist(g,:),...
-        'DisplayName',sprintf('p(%s) Individual',groupnames{g}));
-end
+% for g = 1:numgroups
+%     plot(indprob(:,g),'LineWidth',0.5,'LineStyle','-.','Color',colorlist(g,:),...
+%         'DisplayName',sprintf('p(%s) Individual',groupnames{g}));
+% end
 
 legend('toggle','Location','best');
 
@@ -104,12 +104,12 @@ ylabel('Class probability','FontName','Helvetica','FontSize',fontsize);
 print(gcf,sprintf('%s/figures/%s_combprob.tif',filepath,basename),'-dtiff','-r150');
 close(gcf);
 
-[~,maxdiff] = max(abs(combprob(:,1) - combprob(:,2)));
+combprob = mean(combprob,1);
 
 fig_h = figure('Color','white','Name',basename);
 fig_h.Position(3) = fig_h.Position(3) * 2/3;
 for g = 1:numgroups
-    bar(g,combprob(maxdiff,g),'FaceColor',colorlist(g,:),'LineWidth',1.5);
+    bar(g,combprob(g),'FaceColor',colorlist(g,:),'LineWidth',1.5);
     hold all
 end
 set(gca,'FontName','Helvetica','FontSize',fontsize);
@@ -118,5 +118,3 @@ ylim([0 1]);
 ylabel('Probability');
 print(gcf,sprintf('%s/figures/%s_prob.tif',filepath,basename),'-dtiff','-r150');
 close(gcf);
-
-combprob = combprob(maxdiff,:);
