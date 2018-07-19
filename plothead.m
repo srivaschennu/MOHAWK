@@ -1,4 +1,8 @@
-function plothead(basename,bandidx)
+function plothead(basename,bandidx,varargin)
+
+param = finputcheck(varargin, {
+    'arcs', 'string', {'strength','module'}, 'strength'; ...
+    });
 
 loadpaths
 
@@ -16,11 +20,11 @@ bands = {
 
 cohmat = squeeze(matrix(bandidx,:,:));
 
-erange = [0 1];
-vrange = [0 1]; % changes the plot scaling (colours)
+erange = [0.8 1];
+vrange = [0 0.8]; % changes the plot scaling (colours)
 
 minfo = plotgraph3d(cohmat,'plotqt',plotqt,'escale',erange,'vscale',vrange,'cshift',0.4,...
-    'numcolors',5,'arcs','strength','lhfactor',1);
+    'numcolors',5,'arcs',param.arcs,'lhfactor',1);
 fprintf('%s: %s band - number of modules: %d\n',basename,bands{bandidx},length(unique(minfo)));
 set(gcf,'Name',sprintf('%s: %s band',basename,bands{bandidx}));
 
