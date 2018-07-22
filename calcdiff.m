@@ -51,6 +51,8 @@ for n = 1:numrand+1
     wplidiff(n,:) = wplidiff(n,:) - wpli(:,freqidx)';
 end
 
+pdist = max(wplidiff,[],2);
+
 meandiff = repmat(mean(wplidiff,1),size(wplidiff,1),1);
 stddiff = repmat(std(wplidiff,[],1),size(wplidiff,1),1);
 wplidiff = (wplidiff - meandiff) ./ (stddiff / sqrt(numrand+1));
