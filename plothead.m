@@ -20,7 +20,7 @@ bands = {
 
 cohmat = squeeze(matrix(bandidx,:,:));
 
-erange = [0 1];
+erange = [0.8 1];
 vrange = [0 1]; % changes the plot scaling (colours)
 
 minfo = plotgraph3d(cohmat,'plotqt',plotqt,'escale',erange,'vscale',vrange,'cshift',0.4,...
