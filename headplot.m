@@ -791,6 +791,7 @@ elseif isfield(meshfile, 'TRI1')
 elseif isfield(meshfile, 'vertices')
     POS  = meshfile.vertices;
     TRI1 = meshfile.faces;
+    center = meshfile.center;
 else
     error('Unknown Matlab mesh file');
 end;

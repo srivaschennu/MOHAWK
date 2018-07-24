@@ -24,17 +24,22 @@ erange = [0.8 1];
 vrange = [0 1]; % changes the plot scaling (colours)
 
 minfo = plotgraph3d(cohmat,'plotqt',plotqt,'escale',erange,'vscale',vrange,'cshift',0.4,...
-    'numcolors',5,'arcs',param.arcs,'lhfactor',1);
+    'numcolors',5,'arcs',param.arcs,'lhfactor',0.8);
 fprintf('%s: %s band - number of modules: %d\n',basename,bands{bandidx},length(unique(minfo)));
 set(gcf,'Name',sprintf('%s: %s band',basename,bands{bandidx}));
 
 fprintf('Saving image.\n');
-camva(8);
-camtarget([-9.7975  -28.8277   41.8981]);
-campos([-1.7547    1.7161    1.4666]*1000);
+% camva(8);
+% camtarget([-9.7975  -28.8277   41.8981]);
+% campos([-1.7547    1.7161    1.4666]*1000);
 camzoom(1.25);
+
+camva(6.4037);
+camtarget([-2.7303  -11.5337  116.3073]);
+campos([-2.0188    1.9892    0.8690]*1000);
+
 set(gcf,'InvertHardCopy','off');
-print(gcf,sprintf('%s/figures/%s_%s_mohawk.tif',filepath,basename,bands{bandidx}),'-dtiff','-r150');
+print(gcf,sprintf('%s/figures/%s_%s_mohawk.tif',filepath,basename,bands{bandidx}),'-dtiff','-r300');
 
 writerObj = VideoWriter(sprintf('%s/figures/%s_%s_mohawk.avi',filepath,basename,bands{bandidx}));
 writerObj.FrameRate = 25; % How many frames per second.

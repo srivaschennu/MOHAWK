@@ -94,8 +94,13 @@ data2plot = zeros(1,length(allchanlocs));
 [~,chanidx] = ismember({sortedlocs.labels}',{allchanlocs.labels}');
 data2plot(chanidx) = vsize;
 
-[~,chanlocs3d] = headplot(data2plot,sprintf('allchanlocs_%d.spl',size(matrix,1)),...
-    'electrodes','off','maplimits',[-1 1]*(1-param.cshift),'view',param.view);
+% [~,chanlocs3d] = headplot(data2plot,sprintf('allchanlocs_%d.spl',size(matrix,1)),...
+%     'electrodes','off','maplimits',[-1 1]*(1-param.cshift),'view',param.view);
+
+load /Users/chennu/gdrive/MR_Meditation/MR_mesh.mat
+[~,chanlocs3d] = headplot(data2plot,'/Users/chennu/gdrive/MR_Meditation/MR.spl',...
+    'electrodes','off','maplimits',[-1 1]*(1-param.cshift),'view',param.view,'meshfile',MR_mesh);
+
 chanlocs3d = chanlocs3d(chanidx,:);
 
 xlim('auto'); ylim('auto'); zlim('auto');
