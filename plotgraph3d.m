@@ -20,6 +20,7 @@ param = finputcheck(varargin, {
     'cshift', 'real', [], 0.4; ...
     'numcolors', 'real', [], 5; ...
     'arcs', 'string', {'strength','module'}, 'strength'; ...
+    'athick', 'real', [], 0.75; ...    
     });
 
 matrix(isnan(matrix)) = 0;
@@ -94,12 +95,12 @@ data2plot = zeros(1,length(allchanlocs));
 [~,chanidx] = ismember({sortedlocs.labels}',{allchanlocs.labels}');
 data2plot(chanidx) = vsize;
 
-% [~,chanlocs3d] = headplot(data2plot,sprintf('allchanlocs_%d.spl',size(matrix,1)),...
-%     'electrodes','off','maplimits',[-1 1]*(1-param.cshift),'view',param.view);
+[~,chanlocs3d] = headplot(data2plot,sprintf('allchanlocs_%d.spl',size(matrix,1)),...
+    'electrodes','off','maplimits',[-1 1]*(1-param.cshift),'view',param.view);
 
-load /Users/chennu/gdrive/MR_Meditation/MR_mesh.mat
-[~,chanlocs3d] = headplot(data2plot,'/Users/chennu/gdrive/MR_Meditation/MR.spl',...
-    'electrodes','off','maplimits',[-1 1]*(1-param.cshift),'view',param.view,'meshfile',MR_mesh);
+% load /Users/chennu/gdrive/MR_Meditation/MR_mesh.mat
+% [~,chanlocs3d] = headplot(data2plot,'/Users/chennu/gdrive/MR_Meditation/MR.spl',...
+%     'electrodes','off','maplimits',[-1 1]*(1-param.cshift),'view',param.view,'meshfile',MR_mesh);
 
 chanlocs3d = chanlocs3d(chanidx,:);
 
@@ -119,9 +120,9 @@ for r = 1:size(matrix,1)
                 elseif strcmp(param.arcs,'module')
                     ecol = colorlist(minfo(r),:);
                 end
-                plotarc3d(chanlocs3d([r,c],:),eheight,ecol,0.75);
+                plotarc3d(chanlocs3d([r,c],:),eheight,ecol,param.athick);
             elseif strcmp(param.plotinter,'on')
-                plotarc3d(chanlocs3d([r,c],:),eheight,[0 0 0],0.75);
+                plotarc3d(chanlocs3d([r,c],:),eheight,[0 0 0],param.athick);
             end
         end
     end

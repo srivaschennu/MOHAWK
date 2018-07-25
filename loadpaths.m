@@ -1,1 +1,1 @@
-filepath = '/Users/chennu/Data/MOHAWK/';
+filepath='/Volumes/bigdisk/Data/MOHAWK/';
