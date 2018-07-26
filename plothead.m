@@ -24,8 +24,8 @@ cohmat = squeeze(matrix(bandidx,:,:));
 erange = [0 1];
 vrange = [0 1]; % changes the plot scaling (colours)
 
-minfo = plotgraph3d(cohmat,'plotqt',plotqt,'escale',erange,'vscale',vrange,'cshift',0.4,...
-    'numcolors',5,'arcs',param.arcs,'lhfactor',1);
+minfo = plotgraph3d_cc(cohmat,'plotqt',plotqt,'escale',erange,'vscale',vrange,'cshift',0.4,...
+    'numcolors',5,'arcs',param.arcs,'lhfactor',1,'athick',0.25);
 fprintf('%s: %s band - number of modules: %d\n',basename,bands{bandidx},length(unique(minfo)));
 set(gcf,'Name',sprintf('%s: %s band',basename,bands{bandidx}));
 
@@ -35,7 +35,7 @@ camtarget([-9.7975  -28.8277   41.8981]);
 campos([-1.7547    1.7161    1.4666]*1000);
 camzoom(1.25);
 set(gcf,'InvertHardCopy','off');
-print(gcf,sprintf('%s/figures/%s_%s_mohawk.tif',filepath,basename,bands{bandidx}),'-dtiff','-r150');
+print(gcf,sprintf('%s/figures/%s_%s_mohawk.tif',filepath,basename,bands{bandidx}),'-dtiff','-r300');
 
 if strcmp(param.movie,'on')
     writerObj = VideoWriter(sprintf('%s/figures/%s_%s_mohawk.avi',filepath,basename,bands{bandidx}));
