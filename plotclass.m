@@ -30,6 +30,10 @@ fontsize = 20;
 
 clsyfyrlist = {
     'svm-rbf_UWS_MCS-'
+    'tree_UWS_MCS-'
+    'nn_UWS_MCS-'
+    'knn_UWS_MCS-'
+    'nbayes_UWS_MCS-'
     };
 
 fprintf('Loading classifiers:');
@@ -39,7 +43,7 @@ for c = 1:length(clsyfyrlist)
         load(sprintf('%s/%s.mat',filepath,clsyfyrlist{c}),'output1','clsyfyrinfo');
         clsyfyr = vertcat(output1{:});
     elseif c > 1
-        nextclsyfyr = load(sprintf('%sclsyfyr_%s_%s.mat',filepath,param.group,clsyfyrlist{c}),'output1','clsyfyrinfo');
+        nextclsyfyr = load(sprintf('%s/%s.mat',filepath,clsyfyrlist{c}),'output1','clsyfyrinfo');
         clsyfyr = cat(1,clsyfyr,vertcat(nextclsyfyr.output1{:}));
         clsyfyrinfo.clsyfyrparam = cat(1,clsyfyrinfo.clsyfyrparam,nextclsyfyr.clsyfyrinfo.clsyfyrparam);
     end
@@ -117,4 +121,28 @@ set(gca,'XTick',1:numgroups,'XTickLabel',groupnames);
 ylim([0 1]);
 ylabel('Probability');
 print(gcf,sprintf('%s/figures/%s_prob.tif',filepath,basename),'-dtiff','-r150');
+close(gcf);
+
+load(sprintf('%s/combclassifier.mat',filepath),'allbel','truelabels');
+
+figure('Color','white');
+figpos = get(gcf,'Position');
+figpos(3) = figpos(3)*2/3;
+set(gcf,'Position',figpos);
+
+plotvals = mean(mean(allbel(:,2,1,:),4),3);
+plotvals = cat(1,plotvals, combprob(2));
+plotgroups = truelabels+1;
+plotgroups = cat(1,plotgroups,max(truelabels)+2);
+plotxticklabels = [groupnames {'Patient'}];
+numgroups = numgroups+1;
+boxh = notBoxPlot(plotvals,plotgroups,0.5,'patch',ones(size(plotgroups)));
+for h = 1:length(boxh)
+    set(boxh(h).data,'Color',colorlist(h,:),'MarkerFaceColor',facecolorlist(h,:))
+end
+set(gca,'FontName','Helvetica','FontSize',fontsize);
+set(gca,'XLim',[0.5 numgroups+0.5],'XTick',1:numgroups,'YLim', [0 1], ...
+        'XTickLabel',plotxticklabels,'FontName','Helvetica','FontSize',fontsize);
+ylabel('Probability','FontName','Helvetica','FontSize',fontsize);
+print(gcf,sprintf('%s/figures/%s_allprob.tif',filepath,basename),'-dtiff','-r150');
 close(gcf);

@@ -261,6 +261,16 @@ uwsucs = {
     'mami_03'	1
     };
 
+testnewpat = {
+    'Dieu_mohawk'
+    'DeVaal_mohawk'
+    'TaCr_mohawk'
+    'JeAn_mohawk'
+    'ForJe_mohawk'
+    'asan_mohawk'
+    'AnMa_mohawk'
+    };
+
 allsubj = cat(1,patlist,assc,ctrllist);
 allpat = cat(1,patlist,newpatlist);
 allnewsubj = cat(1,patlist,assc,newpatlist,ctrllist);

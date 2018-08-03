@@ -3,15 +3,35 @@ function testind(basename)
 loadpaths
 changroups
 
-modelfile = 'svm-rbf_UWS_MCS-';
+clsyfyrlist = {
+    'svm-rbf_UWS_MCS-'
+    'tree_UWS_MCS-'
+    'nn_UWS_MCS-'
+    'knn_UWS_MCS-'
+    'nbayes_UWS_MCS-'
+    };
+
 weiorbin = 2;
 
 savefile = sprintf('%s/%s_mohawk.mat',filepath,basename);
 load(savefile);
 
-load(sprintf('%s/%s.mat',filepath,modelfile));
-clsyfyr = vertcat(output1{:});
-model = output2;
+fprintf('Loading classifiers:');
+for c = 1:length(clsyfyrlist)
+    fprintf(' %s',clsyfyrlist{c});
+    if c == 1
+        load(sprintf('%s/%s.mat',filepath,clsyfyrlist{c}),'output1','output2','clsyfyrinfo');
+        clsyfyr = vertcat(output1{:});
+        model = output2;
+    elseif c > 1
+        nextclsyfyr = load(sprintf('%s/%s.mat',filepath,clsyfyrlist{c}),'output1','output2','clsyfyrinfo');
+        clsyfyr = cat(1,clsyfyr,vertcat(nextclsyfyr.output1{:}));
+        model = cat(1,model,nextclsyfyr.output2);
+        clsyfyrinfo.clsyfyrparam = cat(1,clsyfyrinfo.clsyfyrparam,nextclsyfyr.clsyfyrinfo.clsyfyrparam);
+    end
+end
+fprintf('\n');
+
 clear output1 output2
 
 fprintf('Testing with clsyfyr');
