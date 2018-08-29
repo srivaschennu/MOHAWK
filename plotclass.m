@@ -30,10 +30,10 @@ fontsize = 20;
 
 clsyfyrlist = {
     'svm-rbf_UWS_MCS-'
-    'tree_UWS_MCS-'
-    'nn_UWS_MCS-'
-    'knn_UWS_MCS-'
-    'nbayes_UWS_MCS-'
+%     'tree_UWS_MCS-'
+% %     'nn_UWS_MCS-'
+%     'knn_UWS_MCS-'
+%     'nbayes_UWS_MCS-'
     };
 
 fprintf('Loading classifiers:');
@@ -58,7 +58,7 @@ numgroups = length(clsyfyrinfo.groups);
 groupnames = clsyfyrinfo.groupnames;
 
 subjfile = sprintf('%s/%s_mohawk.mat',filepath,basename);
-load(subjfile);
+load(subjfile,'testres');
 testres = vertcat(testres{:});
 
 for c = 1:length(clsyfyr)

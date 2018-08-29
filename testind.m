@@ -5,16 +5,16 @@ changroups
 
 clsyfyrlist = {
     'svm-rbf_UWS_MCS-'
-    'tree_UWS_MCS-'
-    'nn_UWS_MCS-'
-    'knn_UWS_MCS-'
-    'nbayes_UWS_MCS-'
+%     'tree_UWS_MCS-'
+% %     'nn_UWS_MCS-'
+%     'knn_UWS_MCS-'
+%     'nbayes_UWS_MCS-'
     };
 
 weiorbin = 2;
 
 savefile = sprintf('%s/%s_mohawk.mat',filepath,basename);
-load(savefile);
+load(savefile,'bpower','matrix','graphdata','tvals');
 
 fprintf('Loading classifiers:');
 for c = 1:length(clsyfyrlist)
