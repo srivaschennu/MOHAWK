@@ -70,5 +70,5 @@ for c = 1:length(chanlocs)
 end
 chanwpli = chanwpli(sortidx,:);
 
-save(savefile,'chanwpli','freq','elec','matrix','bootmat','-append');
+save(savefile,'wpli','chanpairs','chanwpli','freq','elec','matrix','bootmat','-append');
 fprintf('\nDone.\n');
