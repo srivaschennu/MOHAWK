@@ -5,9 +5,9 @@ loadpaths
 loadsubj
 
 subjlist = eval(listname);
-grp = cell2mat(subjlist(:,2));
-%loadcovariates
-%grp = crsdiag;
+
+loadcovariates
+grp = crsdiag;
 
 savename = sprintf('%s/groupdata_%s.mat',filepath,listname);
 filesuffix = '_mohawk';

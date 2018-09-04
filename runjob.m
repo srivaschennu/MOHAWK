@@ -5,14 +5,14 @@ loadpaths
 loadsubj
 
 tasklist = {
-%     'dataimport' 'subjlist(subjidx,1)'
-%     'epochdata' 'subjlist(subjidx,1)'
-%     'rejartifacts' '{[subjlist{subjidx,1} ''_epochs''] 1 4 0 [] 2000 500}'    
-%     'computeic' '{[subjlist{subjidx,1} ''_epochs'']}'
-%     'rejectic' '{subjlist{subjidx,1} ''prompt'' ''off''}'
-%     'rejartifacts' '{[subjlist{subjidx,1} ''_clean''] 2 4 0 [] 500 250}'
-%     'rereference' '{subjlist{subjidx,1} 1 1 ''''}'
-%     'checktrials' '{subjlist{subjidx,1} 60 ''_SASFASTER''}'
+    'dataimport' 'subjlist(subjidx,1)'
+    'epochdata' 'subjlist(subjidx,1)'
+    'rejartifacts' '{[subjlist{subjidx,1} ''_epochs''] 1 4 1}'    
+    'computeic' '{[subjlist{subjidx,1} ''_epochs'']}'
+    'rejectic' '{subjlist{subjidx,1} ''prompt'' ''off''}'
+    'rejartifacts' '{[subjlist{subjidx,1} ''_clean''] 2 4 0 [] 500 250}'
+    'rereference' '{subjlist{subjidx,1} 1 1 ''''}'
+    'checktrials' '{subjlist{subjidx,1} 60 ''''}'
     'calcftspec' 'subjlist(subjidx,1)'
 %     'plotftspec' 'subjlist(subjidx,1)'
     'ftcoherence' 'subjlist(subjidx,1)'
