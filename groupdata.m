@@ -13,7 +13,7 @@ savename = sprintf('%s/groupdata_%s.mat',filepath,listname);
 filesuffix = '_mohawk';
 
 for s = 1:size(subjlist,1)
-    basename = strtok(subjlist{s,1},'.');
+    basename = strtok(subjlist{s,1}{1},'.');
     
     fprintf('Processing %s.\n',basename);
     loadname = sprintf('%s/%s%s%s.mat',filepath,basename,filesuffix);

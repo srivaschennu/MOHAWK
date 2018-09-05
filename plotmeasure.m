@@ -3,7 +3,7 @@ function [scores,group,stats] = plotmeasure(listname,measure,bandidx,varargin)
 param = finputcheck(varargin, {
     'group', 'string', [], 'crsdiag'; ...
     'face', 'string', [], ''; ...
-    'groupnames', 'cell', {}, {'UWS','MCS-','MCS+','EMCS','LIS','CTRL'}; ...newpatlist
+    'groupnames', 'cell', {}, {'UWS','MCS-','MCS+','EMCS','LIS','CTRL'}; ...
     'changroup', 'string', [], 'allchan'; ...
     'changroup2', 'string', [], 'allchan'; ...
     'xlabel', 'string', [], ''; ...
@@ -23,13 +23,8 @@ fontsize = 24;
 
 loadpaths
 changroups
-loadsubj
 
-subjlist = eval(listname);
-
-loadcovariates
-
-load(sprintf('%s/groupdata_%s.mat',filepath,listname),'allcoh');
+load(sprintf('%s/groupdata_%s.mat',filepath,listname),'allcoh','subjlist');
 load(sprintf('sortedlocs_%d.mat',size(allcoh,3)));
 if strcmp(param.changroup,'allchan')
     param.changroup = sprintf('%s_%d',param.changroup,size(allcoh,3));
@@ -38,7 +33,7 @@ if strcmp(param.changroup2,'allchan')
     param.changroup2 = sprintf('%s_%d',param.changroup2,size(allcoh,3));
 end
 
-groupvar = eval(param.group);
+groupvar = subjlist.(param.group);
 
 groups = unique(groupvar(~isnan(groupvar)));
 
