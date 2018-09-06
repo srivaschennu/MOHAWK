@@ -1,2 +1,2 @@
 filepath='/Volumes/bigdisk/Data/MOHAWK/';
-% filepath='/Volumes/bigdisk/BigData/BETADOC/';
+rawpath='/Volumes/bigdisk/Data/Liege-RestingState/';

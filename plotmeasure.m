@@ -69,6 +69,9 @@ elseif strcmpi(measure,'specent')
 elseif strcmpi(measure,'median')
     load(sprintf('%s/groupdata_%s.mat',filepath,listname),'allcoh');
     testdata = median(median(allcoh(:,bandidx,ismember({sortedlocs.labels},eval(param.changroup)),ismember({sortedlocs.labels},eval(param.changroup2))),4),3);
+elseif strcmpi(measure,'wsmi')
+    load(sprintf('%s/groupdata_%s.mat',filepath,listname),'allwsmi');
+    testdata = median(median(allwsmi(:,bandidx,ismember({sortedlocs.labels},eval(param.changroup)),ismember({sortedlocs.labels},eval(param.changroup2))),4),3);
 elseif strcmpi(measure,'mean')
     load(sprintf('%s/groupdata_%s.mat',filepath,listname),'allcoh');
     testdata = mean(mean(allcoh(:,bandidx,ismember({sortedlocs.labels},eval(param.changroup)),ismember({sortedlocs.labels},eval(param.changroup2))),4),3);

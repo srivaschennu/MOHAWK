@@ -15,14 +15,14 @@ tasklist = {
 %     'rejectic' '{subjlist{subjidx,1} ''prompt'' ''off''}'
 %     'rejartifacts' '{[subjlist{subjidx,1} ''_clean''] 2 4 0 [] 500 250}'
 % 
-    'rereference' '{subjlist{subjidx,1} 1 1 ''''}'
-    'checktrials' '{subjlist{subjidx,1} 60 ''''}'
-    'calcftspec' 'subjlist(subjidx,1)'
+%     'rereference' '{subjlist{subjidx,1} 1 1 ''''}'
+%     'checktrials' '{subjlist{subjidx,1} 60 ''''}'
+%     'calcftspec' 'subjlist(subjidx,1)'
 %     'plotftspec' 'subjlist(subjidx,1)'
-    'ftcoherence' 'subjlist(subjidx,1)'
-    'calcgraph' '{subjlist{subjidx,1}}'
+%     'ftcoherence' 'subjlist(subjidx,1)'
+%     'calcgraph' '{subjlist{subjidx,1}}'
 %     'calcgraph' '{subjlist{subjidx,1} ''randomise'' ''on''}'
-%     'calcwsmi' 'subjlist(subjidx,1)'
+    'calcwsmi' 'subjlist(subjidx,1)'
     };
 
 
