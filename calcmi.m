@@ -2,17 +2,14 @@ function calcmi(listname,varargin)
 
 loadpaths
 
-load(sprintf('%s%s.mat',filepath,listname));
-subjlist = table2cell(newpatlist);
-
-measure = 'participation coefficient';
+measure = 'modules';
 
 param = finputcheck(varargin, {
     'randratio', 'string', {'on','off'}, 'off'; ...
     });
 
-load(sprintf('%s/graphdata_%s.mat',filepath,listname),'graph','tvals');
-ctrlgraph = load(sprintf('%s/graphdata_ctrllist.mat',filepath),'graph','tvals');
+load(sprintf('%s/groupdata_%s.mat',filepath,listname),'graph','tvals','subjlist');
+% ctrlgraph = load(sprintf('%s/groupdata_ctrllist.mat',filepath),'graph','tvals');
 
 weiorbin = 2;
 
@@ -25,24 +22,29 @@ end
 
 modinfo = graph{strcmp(measure,graph(:,1)),weiorbin};
 
-allctrl = ctrlgraph.graph{strcmp(measure,graph(:,1)),weiorbin};
+% allctrl = ctrlgraph.graph{strcmp(measure,graph(:,1)),weiorbin};
 % meanctrl = squeeze(mean(ctrlgraph.graph{strcmp(measure,graph(:,1)),weiorbin}(crsdiag == 5,:,:,:),1));
 
-mutinfo = zeros(size(modinfo,1),size(allctrl,1),size(modinfo,2),size(modinfo,3));
+mutinfo = nan(size(modinfo,1),size(modinfo,1),size(modinfo,2),size(modinfo,3));
 
 for bandidx = 1:size(modinfo,2)
+    fprintf('band %d, threshold', bandidx);
     for t = 1:size(modinfo,3)
+        fprintf(' %d',t);
         for s1 = 1:size(modinfo,1)
-            for s2 = 1:size(allctrl,1)
-                mutinfo(s1,s2,bandidx,t) = ...
-                    corr(squeeze(modinfo(s1,bandidx,t,:)),squeeze(allctrl(s2,bandidx,t,:)));
-            %                     [~, mutinfo(s1,s2,bandidx,t)] = ...
-            %                         partition_distance(zscore(squeeze(modinfo(s1,bandidx,t,:))),zscore(squeeze(modinfo(s2,bandidx,t,:))));
+            for s2 = 1:size(modinfo,1)
+                if s1 ~= s2
+                    %                 mutinfo(s1,s2,bandidx,t) = ...
+                    %                     corr(squeeze(modinfo(s1,bandidx,t,:)),squeeze(allctrl(s2,bandidx,t,:)));
+                    [~, mutinfo(s1,s2,bandidx,t)] = ...
+                        partition_distance(squeeze(modinfo(s1,bandidx,t,:)),squeeze(modinfo(s2,bandidx,t,:)));
+                end
             end
         end
     end
+    fprintf('\n');
 end
 
 graph{midx,weiorbin} = mutinfo;
-fprintf('Appending mutual information to %s/graphdata_%s.mat.\n',filepath,listname);
-save(sprintf('%s/graphdata_%s.mat',filepath,listname), 'graph','-append');
+fprintf('Appending mutual information to %s/groupdata_%s.mat.\n',filepath,listname);
+save(sprintf('%s/groupdata_%s.mat',filepath,listname), 'graph','-append');

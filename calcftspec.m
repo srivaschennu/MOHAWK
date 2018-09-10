@@ -4,7 +4,7 @@ loadpaths
 
 load freqlist.mat
 
-EEG = pop_loadset([filepath basename '.set']);
+EEG = pop_loadset([rawpath basename '.set']);
 chanlocs = EEG.chanlocs;
 
 load(sprintf('sortedlocs_%d.mat',length(chanlocs)));

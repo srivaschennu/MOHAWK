@@ -29,13 +29,13 @@ for s = 1:size(subjlist,1)
         for m = 1:size(graph,1)
             graph{m,2} = zeros([size(subjlist,1) size(graphdata{m,2})]);
         end
-        allwsmi = zeros(size(subjlist,1),size(matrix,1),length(chanlocs),length(chanlocs));
+%         allwsmi = zeros(size(subjlist,1),size(matrix,1),length(chanlocs),length(chanlocs));
     end
     
     matrix(isnan(matrix)) = 0;
     matrix = abs(matrix);
     allcoh(s,:,:,:) = matrix;
-    allwsmi(s,:,:,:) = wsmi;
+%     allwsmi(s,:,:,:) = wsmi;
     allspec(s,:,:) = spectra;
     bandpower(s,:,:) = bpower;
     for m = 1:size(graph,1)
@@ -43,4 +43,5 @@ for s = 1:size(subjlist,1)
     end
 end
 
-save(savename, 'grp', 'allspec', 'freqbins', 'bandpower', 'allcoh', 'subjlist', 'graph', 'tvals', 'subjlist', 'allwsmi');
+save(savename, 'grp', 'allspec', 'freqbins', 'bandpower', ...
+    'allcoh', 'subjlist', 'graph', 'tvals', 'subjlist');

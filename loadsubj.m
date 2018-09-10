@@ -108,59 +108,60 @@ patlist = {
 
 assc = {
     %new patient
-    '109'        0          0          1       1       1     40      1          314           1          5              NaN         NaN          NaN
+    '109'        0          0          1       1       1     40      1          314           1          5
     };
 
 %etiology: 2 = ARCA; 3 = 'hémorragie' 4 = 'occlusion tronc basilaire' 5 = 'ablation de méningiome sphénoidal'
 newpatlist = {
-    %'N'        'Adm diag' 'CRS Diag' 'PET' 'tennis' 'TBI?'       'Age'  'male' 'days onset' 'Outcome' 'CRS-R score'
-    'Ang_20160602'        0         0        0    NaN     0            NaN      0      NaN          1         6             4        'none'                  78
-    'Bas_20170420'        2         3        1    NaN     1            NaN      0      NaN        NaN        20             2        'right'                 28
-    'Bor_20151105'        1         1        1    NaN     1            NaN      0      NaN          2        11             2        'right'                 42
-    'Buc_20160526'        1         1        0    NaN     0            NaN      1      NaN          2         7             3        'same'                  69
-    'Car_20170223'        0         2        0    NaN     1            NaN      0      NaN        NaN         8             1        'left'                  62
-    'Cas_20110908'        2         2        1    NaN     1            NaN      1      NaN        NaN        14             2        'right'                NaN
-    'Com_20170713'        3         2        1    NaN     2            NaN      0      NaN        NaN        21             3        'same'                  44
-    'Dam_20170622'        4         4        1    NaN     4            NaN      0      NaN        NaN        18             3        'same'                 NaN
-    'Dav_201710'          2         2        1    NaN     3            NaN      1      NaN        NaN        14             1        'left'                  68
-    'DeV_20160421'        0         0        0    NaN     0            NaN      1      NaN        NaN         7             3        'same'                  68
-    'Dec_20160916'        0         0        1    NaN     1            NaN      0      NaN        NaN         6             1        'left'                  57
-    'Dec_201710'          1         3        1    NaN     0            NaN      1      152       NaN         22             3        'same'                  21
-    'Die_20160825'      NaN         0        0    NaN     2            NaN      1      NaN        NaN         6           NaN        NaN                  NaN
-    'Dim_20150305'        6         1        1    NaN     2            NaN      0      NaN        NaN        13             1        'left'                  40
-    'GD_20170119'         0         0        0    NaN     0            NaN      0      NaN        NaN         6             3        'same'                  59
-    'Gal_20170824'        0         0        0    NaN     1            NaN      1      NaN        NaN         7             1        'left'                  48
-    'Gin_20160211'        1         2        1    NaN     0            NaN      0      NaN          3        14             3        'equal'                 41
-    'Hed_20170629'      NaN         2        1    NaN     1            NaN      0      NaN        NaN        20             2        'right '                28
-    'Hen_2016031'         0         2        1    NaN     2            NaN      1      NaN          2        11             3        'equal'                 57
-    'Hin_20170209'         7         4        1    NaN     2            NaN      1      NaN        NaN        23             3        'equal'                 18
-    'Jac_20120119'        2         3        1    NaN     3            NaN      0      NaN        NaN        19             1        'left'                 NaN
-    'Jon_20140828'        0         0        1    NaN     1            NaN      1      NaN        NaN         5             2        'right '               NaN
-    'Kay_20111201'        0         2        1    NaN     1            NaN      0      NaN          3        12             3        'equal'                NaN
-    'Kay_20120830'        2         3        1    NaN     1            NaN      0      NaN          3        21             1        'left'                 NaN
-    'Kle_20160913'        0         0        0    NaN     3            NaN      0      NaN          1         5             2        'right '                45
-    'Kle_20170323'        1         2        1    NaN     1            NaN      1      NaN        NaN        16             2        'right '                51
-    'Laf2_20161027'       1         3        1    NaN     1            NaN      0      NaN        NaN        22             2        'right (slightly)'      61
-    'Lal_20150122'        3         3        1    NaN     1            NaN      1      NaN          1        18             3        'equal'                 25
-    'Lem_20170720'        1         1        1    NaN     1            NaN      1      NaN        NaN         9             2        'right'                NaN
+      'name'  'refdiag' 'crsdiag' 'pet' 'tennis'  'tbi' 'age'   'male' 'days_onset' 'outcome' 'crsr'
+    'Ang_20160602'        0         0        0    NaN     0            NaN      0      NaN          1         6
+    'Bas_20170420'        2         3        1    NaN     1            NaN      0      NaN        NaN        20
+    'Bor_20151105'        1         1        1    NaN     1            NaN      0      NaN          2        11
+    'Buc_20160526'        1         1        0    NaN     0            NaN      1      NaN          2         7
+    'Car_20170223'        0         2        0    NaN     1            NaN      0      NaN        NaN         8
+    'Cas_20110908'        2         2        1    NaN     1            NaN      1      NaN        NaN        14
+    'Com_20170713'        3         2        1    NaN     2            NaN      0      NaN        NaN        21
+    'Dam_20170622'        4         4        1    NaN     4            NaN      0      NaN        NaN        18
+    'Dav_201710'          2         2        1    NaN     3            NaN      1      NaN        NaN        14
+    'DeV_20160421'        0         0        0    NaN     0            NaN      1      NaN        NaN         7
+    'Dec_20160916'        0         0        1    NaN     1            NaN      0      NaN        NaN         6
+    'Dec_201710'          1         3        1    NaN     0            NaN      1      152       NaN         22
+    'Die_20160825'      NaN         0        0    NaN     2            NaN      1      NaN        NaN         6
+    'Dim_20150305'        6         1        1    NaN     2            NaN      0      NaN        NaN        13
+    'GD_20170119'         0         0        0    NaN     0            NaN      0      NaN        NaN         6
+    'Gal_20170824'        0         0        0    NaN     1            NaN      1      NaN        NaN         7
+    'Gin_20160211'        1         2        1    NaN     0            NaN      0      NaN          3        14
+    'Hed_20170629'      NaN         2        1    NaN     1            NaN      0      NaN        NaN        20
+    'Hen_2016031'         0         2        1    NaN     2            NaN      1      NaN          2        11
+    'Hin_20170209'         7         4        1    NaN     2            NaN      1      NaN        NaN       2
+    'Jac_20120119'        2         3        1    NaN     3            NaN      0      NaN        NaN        19
+    'Jon_20140828'        0         0        1    NaN     1            NaN      1      NaN        NaN         5
+    'Kay_20111201'        0         2        1    NaN     1            NaN      0      NaN          3        12
+    'Kay_20120830'        2         3        1    NaN     1            NaN      0      NaN          3        21
+    'Kle_20160913'        0         0        0    NaN     3            NaN      0      NaN          1         5
+    'Kle_20170323'        1         2        1    NaN     1            NaN      1      NaN        NaN        16
+    'Laf2_20161027'       1         3        1    NaN     1            NaN      0      NaN        NaN        22
+    'Lal_20150122'        3         3        1    NaN     1            NaN      1      NaN          1        18
+    'Lem_20170720'        1         1        1    NaN     1            NaN      1      NaN        NaN         9
     %     'Lud_20170727'      NaN       NaN      NaN    NaN     NaN          NaN    NaN      NaN        NaN       NaN           NaN        NaN                  NaN
-    'Mak_20170309'        0         0        0    NaN     2            NaN      0      NaN        NaN         8             3        'equal'                 60
-    'Mar_20170706'        1         0        0    NaN     1            NaN      1      NaN        NaN         6             1        'left'                  54
-    'Mas_20170105'      NaN         2        1    NaN     2            NaN      1      NaN        NaN        18           NaN        NaN                  NaN
-    'Mig_20160609'        2         3        1    NaN     3            NaN      0      NaN          3        22             1        'left'                  24
-    'Ngu_20170302'        1         2        1    NaN     5            NaN      0      NaN        NaN        17             2        'right'                 53
-    'Par_20170216'        1         2        1    NaN     1            NaN      1      NaN        NaN        12             2        'right'                 50
+    'Mak_20170309'        0         0        0    NaN     2            NaN      0      NaN        NaN         8
+    'Mar_20170706'        1         0        0    NaN     1            NaN      1      NaN        NaN         6
+    'Mas_20170105'      NaN         2        1    NaN     2            NaN      1      NaN        NaN        18
+    'Mig_20160609'        2         3        1    NaN     3            NaN      0      NaN          3        22
+    'Ngu_20170302'        1         2        1    NaN     5            NaN      0      NaN        NaN        17
+    'Par_20170216'        1         2        1    NaN     1            NaN      1      NaN        NaN        12
     %     'PeeG_20160325'     NaN       NaN      NaN    NaN     NaN          NaN    NaN      NaN        NaN       NaN           NaN        NaN                  NaN
-    'PeeQ_20160218'       1         2        1    NaN     1            NaN      1      NaN          2        19             3        'equal'                 49
-    'Reg_20160707'        1         1        1    NaN     1            NaN      1      NaN        NaN        13             2        'right'                 40
-    'Sch_20110804'        1         2        1    NaN     2            NaN      1      NaN        NaN        17             3        'equal'                NaN
-    'Tri_2016122'       NaN         0        0    NaN     1            NaN      1      NaN        NaN         5           NaN        NaN                  NaN
-    'Van_20110714'        8         4        1    NaN     1            NaN      1      NaN        NaN        23             3        'equal'                NaN
+    'PeeQ_20160218'       1         2        1    NaN     1            NaN      1      NaN          2        19
+    'Reg_20160707'        1         1        1    NaN     1            NaN      1      NaN        NaN        13
+    'Sch_20110804'        1         2        1    NaN     2            NaN      1      NaN        NaN        17
+    'Tri_2016122'       NaN         0        0    NaN     1            NaN      1      NaN        NaN         5
+    'Van_20110714'        8         4        1    NaN     1            NaN      1      NaN        NaN        23
     %     'Ver_20160922'      NaN       NaN      NaN    NaN     NaN          NaN    NaN      NaN        NaN       NaN           NaN        NaN                  NaN
-    'Wei_20170831'        0         0        0    NaN     2            NaN      1      NaN        NaN         7             1        'left'                  64
+    'Wei_20170831'        0         0        0    NaN     2            NaN      1      NaN        NaN         7
     };
 
 ctrllist = {
+   'name'  'refdiag' 'crsdiag' 'pet' 'tennis'  'tbi' 'age'   'male' 'days_onset' 'outcome' 'crsr' 
     'BenFatma_20100216'		NaN		5		NaN		NaN		NaN		36		0		NaN		NaN		NaN
     'Blanche_20100713'		NaN		5		NaN		NaN		NaN		62		1		NaN		NaN		NaN
     'Cahoolessur_20100526'	NaN		5		NaN		NaN		NaN		32		1		NaN		NaN		NaN
@@ -271,9 +272,8 @@ testnewpat = {
     'AnMa_mohawk'
     };
 
-allsubj = cat(1,patlist,ctrllist);
-% allpat = cat(1,patlist,newpatlist);
-% allnewsubj = cat(1,patlist,assc,newpatlist,ctrllist);
+allsubj = cat(1,patlist,assc,ctrllist);
+allnewsubj = cat(1,patlist,assc,newpatlist(2:end,:),ctrllist);
 
 
 betadoc = {
