@@ -1,4 +1,9 @@
-function groupdata(listname)
+function groupdata(listname,varargin)
+
+param = finputcheck(varargin, {
+    'group', 'string', [], 'crsdiag'; ...
+    });
+
 
 loadpaths
 
@@ -7,10 +12,12 @@ loadsubj
 subjlist = eval(listname);
 
 loadcovariates
-grp = crsdiag;
+grp = eval(param.group);
 
 savename = sprintf('%s/groupdata_%s.mat',filepath,listname);
 filesuffix = '_mohawk';
+
+load /Users/chennu/Work/EGI/173to91.mat keepidx
 
 for s = 1:size(subjlist,1)
     basename = strtok(subjlist{s,1}{1},'.');
@@ -30,6 +37,17 @@ for s = 1:size(subjlist,1)
             graph{m,2} = zeros([size(subjlist,1) size(graphdata{m,2})]);
         end
 %         allwsmi = zeros(size(subjlist,1),size(matrix,1),length(chanlocs),length(chanlocs));
+    end
+    
+    if size(matrix,2) == 173
+        matrix = matrix(:,keepidx,keepidx);
+        spectra = spectra(keepidx,:);
+        bpower = bpower(:,keepidx);
+        for m = 1:size(graph,1)
+            if ndims(graphdata{m,2}) == 3
+                graphdata{m,2} = graphdata{m,2}(:,:,keepidx);
+            end
+        end
     end
     
     matrix(isnan(matrix)) = 0;

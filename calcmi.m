@@ -33,11 +33,13 @@ for bandidx = 1:size(modinfo,2)
         fprintf(' %d',t);
         for s1 = 1:size(modinfo,1)
             for s2 = 1:size(modinfo,1)
-                if s1 ~= s2
+                if s1 < s2
                     %                 mutinfo(s1,s2,bandidx,t) = ...
                     %                     corr(squeeze(modinfo(s1,bandidx,t,:)),squeeze(allctrl(s2,bandidx,t,:)));
                     [~, mutinfo(s1,s2,bandidx,t)] = ...
                         partition_distance(squeeze(modinfo(s1,bandidx,t,:)),squeeze(modinfo(s2,bandidx,t,:)));
+                elseif s1 > s2
+                    mutinfo(s1,s2,bandidx,t) = mutinfo(s2,s1,bandidx,t);
                 end
             end
         end

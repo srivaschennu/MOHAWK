@@ -6,3 +6,9 @@ for c = 2:length(covariatenames)
 end
 
 subjlist = cell2table(subjlist,'VariableNames',covariatenames);
+
+if exist('crsdiag','var')
+    crsdiagwithcmd = crsdiag;
+    crsdiagwithcmd(crsdiag == 0 & (tennis == 1 | petdiag == 1)) = 6;
+    subjlist.crsdiagwithcmd = crsdiagwithcmd;
+end

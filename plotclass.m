@@ -1,9 +1,5 @@
 function [combprob,groupnames] = plotclass(basename,varargin)
 
-param = finputcheck(varargin, {
-    'nclsyfyrs', 'real', [], 50; ...
-    });
-
 loadpaths
 
 colorlist = [
@@ -28,60 +24,12 @@ facecolorlist = [
 
 fontsize = 20;
 
-clsyfyrlist = {
-    'svm-rbf_UWS_MCS-'
-%     'tree_UWS_MCS-'
-% %     'nn_UWS_MCS-'
-%     'knn_UWS_MCS-'
-%     'nbayes_UWS_MCS-'
-    };
-
-fprintf('Loading classifiers:');
-for c = 1:length(clsyfyrlist)
-    fprintf(' %s',clsyfyrlist{c});
-    if c == 1
-        load(sprintf('%s/%s.mat',filepath,clsyfyrlist{c}),'output1','clsyfyrinfo');
-        clsyfyr = vertcat(output1{:});
-    elseif c > 1
-        nextclsyfyr = load(sprintf('%s/%s.mat',filepath,clsyfyrlist{c}),'output1','clsyfyrinfo');
-        clsyfyr = cat(1,clsyfyr,vertcat(nextclsyfyr.output1{:}));
-        clsyfyrinfo.clsyfyrparam = cat(1,clsyfyrinfo.clsyfyrparam,nextclsyfyr.clsyfyrinfo.clsyfyrparam);
-    end
-end
-fprintf('\n');
-
-if isempty(param.nclsyfyrs)
-    param.nclsyfyrs = length(clsyfyr);
-end
+subjfile = sprintf('%s/%s_mohawk.mat',filepath,basename);
+load(subjfile,'indprob','combprob','clsyfyrinfo');
 
 numgroups = length(clsyfyrinfo.groups);
 groupnames = clsyfyrinfo.groupnames;
 
-subjfile = sprintf('%s/%s_mohawk.mat',filepath,basename);
-load(subjfile,'testres');
-testres = vertcat(testres{:});
-
-for c = 1:length(clsyfyr)
-    clsyfyr(c).cm = round(clsyfyr(c).cm * 100 ./ repmat(sum(clsyfyr(c).cm,2),1,size(clsyfyr(c).cm,2),1));
-    clsyfyr(c).cm = clsyfyr(c).cm + eps;
-    clsyfyr(c).cm = clsyfyr(c).cm ./ repmat(sum(clsyfyr(c).cm,1),size(clsyfyr(c).cm,1),1,1);
-end
-
-indprob = NaN(param.nclsyfyrs,numgroups);
-combprob = NaN(param.nclsyfyrs,numgroups);
-
-[~,perfsort] = sort(arrayfun(@(x) mean(x.perf),clsyfyr),'descend');
-
-for k = 1:param.nclsyfyrs
-    thispred = testres(perfsort(k)).predlabels;
-    indprob(k,:) = clsyfyr(perfsort(k)).cm(:,thispred+1);
-    if k == 1
-        combprob(k,:) = indprob(k,:);
-    else
-        combprob(k,:) = combprob(k-1,:) .* indprob(k,:);
-    end
-    combprob(k,:) = combprob(k,:) ./ sum(combprob(k,:));
-end
 
 fig_h = figure('Color','white','Name',basename);
 % fig_h.Position(3) = fig_h.Position(3) * 1.5;
@@ -98,7 +46,7 @@ end
 
 legend('toggle','Location','best');
 
-xlim([1 param.nclsyfyrs]);
+xlim([1 size(combprob,1)]);
 ylim([0 1]);
 
 set(gca,'FontName','Helvetica','FontSize',fontsize);

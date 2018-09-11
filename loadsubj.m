@@ -1,5 +1,5 @@
 patlist = {
-  'name'  'refdiag' 'crsdiag' 'pet' 'tennis'  'tbi' 'age'   'male' 'days_onset' 'outcome' 'crsr'
+  'name'  'refdiag' 'crsdiag' 'petdiag' 'tennis'  'tbi' 'age'   'male' 'days_onset' 'outcome' 'crsr'
     '1'     	1		0		1		0		0		49		1		2884	3		7
     '2'         1		2		1		NaN		0		27		0		1570	4		15
     '3'         0		2		1		NaN		1		27		1		1542	NaN		10
@@ -113,7 +113,7 @@ assc = {
 
 %etiology: 2 = ARCA; 3 = 'hémorragie' 4 = 'occlusion tronc basilaire' 5 = 'ablation de méningiome sphénoidal'
 newpatlist = {
-      'name'  'refdiag' 'crsdiag' 'pet' 'tennis'  'tbi' 'age'   'male' 'days_onset' 'outcome' 'crsr'
+    'name'  'refdiag' 'crsdiag' 'petdiag' 'tennis'  'tbi' 'age'   'male' 'days_onset' 'outcome' 'crsr'
     'Ang_20160602'        0         0        0    NaN     0            NaN      0      NaN          1         6
     'Bas_20170420'        2         3        1    NaN     1            NaN      0      NaN        NaN        20
     'Bor_20151105'        1         1        1    NaN     1            NaN      0      NaN          2        11
@@ -161,7 +161,7 @@ newpatlist = {
     };
 
 ctrllist = {
-   'name'  'refdiag' 'crsdiag' 'pet' 'tennis'  'tbi' 'age'   'male' 'days_onset' 'outcome' 'crsr' 
+       'name'  'refdiag' 'crsdiag' 'petdiag' 'tennis'  'tbi' 'age'   'male' 'days_onset' 'outcome' 'crsr' 
     'BenFatma_20100216'		NaN		5		NaN		NaN		NaN		36		0		NaN		NaN		NaN
     'Blanche_20100713'		NaN		5		NaN		NaN		NaN		62		1		NaN		NaN		NaN
     'Cahoolessur_20100526'	NaN		5		NaN		NaN		NaN		32		1		NaN		NaN		NaN
@@ -191,6 +191,7 @@ ctrllist = {
     };
 
 sedation = {
+    'name'  'level'
     'coad_01'	1
     'coad_02'	2
     'coad_03'	3
@@ -272,12 +273,12 @@ testnewpat = {
     'AnMa_mohawk'
     };
 
-allsubj = cat(1,patlist,assc,ctrllist);
-allnewsubj = cat(1,patlist,assc,newpatlist(2:end,:),ctrllist);
+allsubj = cat(1,patlist,assc,ctrllist(2:end,:));
+allnewsubj = cat(1,patlist,assc,newpatlist(2:end,:),ctrllist(2:end,:));
 
 
 betadoc = {
-'name' 'refdiag' 'crsdiag' 'tbi' 'age' 'male' 'daysonset' 'outcome' 'crs' 'auditory' 'visual' 'motor' 'verbal' 'communication' 'arousal' 'traj'	'morn' 'quarter'    
+'name' 'refdiag' 'crsdiag' 'tbi' 'age' 'male' 'days_onset' 'outcome' 'crsr' 'auditory' 'visual' 'motor' 'verbal' 'communication' 'arousal' 'traj'	'morn' 'quarter'    
 'p01_A_16_S1'	NaN	1  	0	21	0	1110	NaN     9	1	3	2	1	0	2	2	2	2
 'p01_A_16_S2'	NaN	1	0	21	0	1189	NaN     10	2	3	2	1	0	2	2	1	2
 'p01_A_16_S3'	NaN	1	0	21	0	1287	NaN     9	1	3	2	1	0	2	2	1	1
@@ -464,3 +465,9 @@ betadoc = {
 'p40_G_18_S1'	1	1	1	36	0	260		NaN     10	1	3	2	1	1	2	NaN	2	2
 'p40_G_18_S2'	1	0	1	37	0	365		NaN     4	1	0	2	0	0	1	NaN	1	2
 };
+
+betadoc = cat(2,betadoc(:,1:3),cat(1,{'petdiag'},num2cell(nan(size(betadoc,1)-1,1))),...
+    cat(1,{'tennis'},num2cell(nan(size(betadoc,1)-1,1))),...
+    betadoc(:,4:9));
+
+betadoc = cat(1,betadoc,ctrllist(2:end,:));

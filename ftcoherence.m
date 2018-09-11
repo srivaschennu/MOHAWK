@@ -39,7 +39,6 @@ matrix = zeros(size(freqlist,1),length(chanlocs),length(chanlocs));
 bootmat = zeros(size(freqlist,1),length(chanlocs),length(chanlocs),numrand);
 coh = zeros(length(chanlocs),length(chanlocs));
 
-freq = EEG.freq;
 elec = EEG.elec;
 
 wpli = ft_connectivity_wpli(EEG.crsspctrm,'debias',true,'dojack',false);
@@ -70,5 +69,5 @@ for c = 1:length(chanlocs)
 end
 chanwpli = chanwpli(sortidx,:);
 
-save(savefile,'wpli','chanpairs','chanwpli','freq','elec','matrix','bootmat','-append');
+save(savefile,'wpli','chanpairs','chanwpli','elec','matrix','bootmat','-append');
 fprintf('\nDone.\n');

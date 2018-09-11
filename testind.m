@@ -1,4 +1,8 @@
-function testind(basename)
+function testind(basename,varargin)
+
+param = finputcheck(varargin, {
+    'nclsyfyrs', 'real', [], 50; ...
+    });
 
 loadpaths
 changroups
@@ -74,12 +78,35 @@ for k = 1:size(clsyfyrinfo.clsyfyrparam,1)
     
     switch clsyfyrinfo.clsyfyrparam{k,4}{1}
         case {'knn' 'svm-linear' 'svm-rbf' 'tree' 'nbayes'}
-            testres{k,1}.predlabels = predict(model{k}, features);
+            testres(k).predlabels = predict(model{k}, features);
             
         case 'nn'
-            testres{k,1}.predlabels = (vec2ind(compet(model{k}(features')))-1)';
+            testres(k).predlabels = (vec2ind(compet(model{k}(features')))-1)';
     end    
 end
 fprintf('\n');
 
-save(savefile,'clsyfyrinfo','testres','-append');
+for c = 1:length(clsyfyr)
+    clsyfyr(c).cm = round(clsyfyr(c).cm * 100 ./ repmat(sum(clsyfyr(c).cm,2),1,size(clsyfyr(c).cm,2),1));
+    clsyfyr(c).cm = clsyfyr(c).cm + eps;
+    clsyfyr(c).cm = clsyfyr(c).cm ./ repmat(sum(clsyfyr(c).cm,1),size(clsyfyr(c).cm,1),1,1);
+end
+
+numgroups = length(clsyfyrinfo.groups);
+indprob = NaN(param.nclsyfyrs,numgroups);
+combprob = NaN(param.nclsyfyrs,numgroups);
+
+[~,perfsort] = sort(arrayfun(@(x) mean(x.perf),clsyfyr),'descend');
+
+for k = 1:param.nclsyfyrs
+    thispred = testres(perfsort(k)).predlabels;
+    indprob(k,:) = clsyfyr(perfsort(k)).cm(:,thispred+1);
+    if k == 1
+        combprob(k,:) = indprob(k,:);
+    else
+        combprob(k,:) = combprob(k-1,:) .* indprob(k,:);
+    end
+    combprob(k,:) = combprob(k,:) ./ sum(combprob(k,:));
+end
+
+save(savefile,'clsyfyrinfo','testres','indprob','combprob','-append');
