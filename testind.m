@@ -92,13 +92,11 @@ for c = 1:length(clsyfyr)
     clsyfyr(c).cm = clsyfyr(c).cm ./ repmat(sum(clsyfyr(c).cm,1),size(clsyfyr(c).cm,1),1,1);
 end
 
-numgroups = length(clsyfyrinfo.groups);
-indprob = NaN(param.nclsyfyrs,numgroups);
-combprob = NaN(param.nclsyfyrs,numgroups);
+fprintf('Combining classifiers.\n');
+listname = 'liege';
+load(sprintf('%s/combclsyfyr_%s.mat',filepath,listname),'perfsort','perfsort');
 
-[~,perfsort] = sort(arrayfun(@(x) mean(x.perf),clsyfyr),'descend');
-
-for k = 1:param.nclsyfyrs
+for k = 1:length(perfsort)
     thispred = testres(perfsort(k)).predlabels;
     indprob(k,:) = clsyfyr(perfsort(k)).cm(:,thispred+1);
     if k == 1

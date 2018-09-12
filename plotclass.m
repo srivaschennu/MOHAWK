@@ -27,10 +27,13 @@ fontsize = 20;
 subjfile = sprintf('%s/%s_mohawk.mat',filepath,basename);
 load(subjfile,'indprob','combprob','clsyfyrinfo');
 
+listname = 'liege';
+load(sprintf('%s/combclsyfyr_%s.mat',filepath,listname),'allbel','truelabels');
+
 numgroups = length(clsyfyrinfo.groups);
 groupnames = clsyfyrinfo.groupnames;
 
-
+%% Plot Class Probability Curves
 fig_h = figure('Color','white','Name',basename);
 % fig_h.Position(3) = fig_h.Position(3) * 1.5;
 hold all
@@ -57,7 +60,9 @@ print(gcf,sprintf('%s/figures/%s_combprob.tif',filepath,basename),'-dtiff','-r15
 close(gcf);
 
 combprob = mean(combprob,1);
+% combprob = combprob(end,:);
 
+%% Plot Class Probability Bar Graph
 fig_h = figure('Color','white','Name',basename);
 fig_h.Position(3) = fig_h.Position(3) * 2/3;
 for g = 1:numgroups
@@ -71,19 +76,21 @@ ylabel('Probability');
 print(gcf,sprintf('%s/figures/%s_prob.tif',filepath,basename),'-dtiff','-r150');
 close(gcf);
 
-load(sprintf('%s/combclassifier.mat',filepath),'allbel','truelabels');
+%% Plot All Class Probabilities
 
 figure('Color','white');
 figpos = get(gcf,'Position');
 figpos(3) = figpos(3)*2/3;
 set(gcf,'Position',figpos);
 
-plotvals = mean(mean(allbel(:,2,1,:),4),3);
+plotvals = allbel;
 plotvals = cat(1,plotvals, combprob(2));
 plotgroups = truelabels+1;
 plotgroups = cat(1,plotgroups,max(truelabels)+2);
 plotxticklabels = [groupnames {'Patient'}];
 numgroups = numgroups+1;
+
+rng('default');
 boxh = notBoxPlot(plotvals,plotgroups,0.5,'patch',ones(size(plotgroups)));
 for h = 1:length(boxh)
     set(boxh(h).data,'Color',colorlist(h,:),'MarkerFaceColor',facecolorlist(h,:))
@@ -91,6 +98,6 @@ end
 set(gca,'FontName','Helvetica','FontSize',fontsize);
 set(gca,'XLim',[0.5 numgroups+0.5],'XTick',1:numgroups,'YLim', [0 1], ...
         'XTickLabel',plotxticklabels,'FontName','Helvetica','FontSize',fontsize);
-ylabel('Probability','FontName','Helvetica','FontSize',fontsize);
+ylabel(sprintf('p(%s)',groupnames{end}),'FontName','Helvetica','FontSize',fontsize);
 print(gcf,sprintf('%s/figures/%s_allprob.tif',filepath,basename),'-dtiff','-r150');
 close(gcf);
