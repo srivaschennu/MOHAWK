@@ -17,7 +17,7 @@ grp = eval(param.group);
 savename = sprintf('%s/groupdata_%s.mat',filepath,listname);
 filesuffix = '_mohawk';
 
-load /Users/chennu/Work/EGI/173to91.mat keepidx
+% load /Users/chennu/Work/EGI/173to91.mat keepidx
 
 for s = 1:size(subjlist,1)
     basename = strtok(subjlist{s,1}{1},'.');

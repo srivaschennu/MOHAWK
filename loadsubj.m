@@ -467,7 +467,8 @@ betadoc = {
 };
 
 betadoc = cat(2,betadoc(:,1:3),cat(1,{'petdiag'},num2cell(nan(size(betadoc,1)-1,1))),...
-    cat(1,{'tennis'},num2cell(nan(size(betadoc,1)-1,1))),...
-    betadoc(:,4:9));
+    cat(1,{'tennis'},num2cell(nan(size(betadoc,1)-1,1))),betadoc(:,4:9));
 
-betadoc = cat(1,betadoc,ctrllist(2:end,:));
+betadoc_ctrl = cat(1,betadoc,ctrllist);
+
+betadoc = cat(2,betadoc,cat(1,'subjnum',cellfun(@(x) str2double(x(end)), betadoc(2:end,1),'UniformOutput',false)));
