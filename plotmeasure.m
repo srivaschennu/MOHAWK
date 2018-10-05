@@ -129,7 +129,7 @@ if strcmp(param.noplot,'off')
         if ~isempty(param.ylim)
             set(gca,'YLim',param.ylim);
         end
-        legend(groupnames,'Location',param.legendlocation);
+        legend(groupnames(groups+1),'Location',param.legendlocation);
         print(gcf,sprintf('%s/figures/%s_%s_%s.tiff',filepath,measure,bands{bandidx},param.group),'-dtiff','-r300');
         close(gcf);
     end
