@@ -2,13 +2,14 @@ function plotmeangraph(listname,bandidx,varargin)
 
 loadpaths
 param = finputcheck(varargin, {
+    'group', 'string', [], 'crsdiag'; ...
     'groupnames', 'cell', {}, {'UWS','MCS-','MCS+','EMCS','LIS','CTRL'}; ...
     });
 
 load(sprintf('%s/groupdata_%s.mat',filepath,listname));
 load(sprintf('sortedlocs_%d.mat',size(allcoh,3)));
 
-groupvar = grp;
+groupvar = subjlist.(param.group);
 groups = unique(groupvar(~isnan(groupvar)));
 
 bands = {
@@ -22,6 +23,7 @@ bands = {
 plotqt = 0.7;
 
 for g = 1:length(groups)
+    fprintf('Averaging %d subjects in group %d.\n', sum(groupvar == groups(g)), groups(g));
     groupcoh(g,:,:) = squeeze(mean(allcoh(groupvar == groups(g),bandidx,:,:),1));
     threshcoh(g,:,:) = threshold_proportional(squeeze(groupcoh(g,:,:)),1-plotqt);
     for c = 1:size(threshcoh,2)
