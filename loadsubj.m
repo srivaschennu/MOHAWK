@@ -471,6 +471,7 @@ betadoc = cat(2,betadoc(:,1:3),cat(1,{'petdiag'},num2cell(nan(size(betadoc,1)-1,
 
 betadoc_ctrl = cat(1,betadoc(:,1:11),ctrllist(2:end,:));
 
-betadoc = cat(2,betadoc,cat(1,'subjnum',cellfun(@(x) str2double(x(end)), betadoc(2:end,1),'UniformOutput',false)));
+betadoc = cat(2,betadoc,cat(1,'sessnum',cellfun(@(x) str2double(x(end)), betadoc(2:end,1),'UniformOutput',false)));
+betadoc = cat(2,betadoc,cat(1,'subjnum',cellfun(@(x) str2double(x(2:3)), betadoc(2:end,1),'UniformOutput',false)));
 
-[~,~,hbn] = xlsread('C:\Users\parkinb\Documents\MATLAB\HBN_scripts\ConsensusD_transformed_16thAug.xlsx','Master');
+% [~,~,hbn] = xlsread('C:\Users\parkinb\Documents\MATLAB\HBN_scripts\ConsensusD_transformed_16thAug.xlsx','Master');

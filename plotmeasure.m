@@ -129,21 +129,20 @@ if strcmp(param.noplot,'off')
         if ~isempty(param.ylim)
             set(gca,'YLim',param.ylim);
         end
-        legend(groupnames(groups+1),'Location',param.legendlocation);
+        legend(groupnames,'Location',param.legendlocation);
         print(gcf,sprintf('%s/figures/%s_%s_%s.tiff',filepath,measure,bands{bandidx},param.group),'-dtiff','-r300');
         close(gcf);
     end
 end
 
-groups = unique(groupvar(~isnan(groupvar)));
-grouppairs = nchoosek(groups,2);
+grouppairs = nchoosek(1:length(groups),2);
 
 for g = 1:size(grouppairs,1)
-    grouppairnames{g} = sprintf('%s-%s',groupnames{groups == grouppairs(g,1)},groupnames{groups == grouppairs(g,2)});
-    thisgroupvar = groupvar(groupvar == grouppairs(g,1) | groupvar == grouppairs(g,2));
+    grouppairnames{g} = sprintf('%s-%s',groupnames{groups == groups(grouppairs(g,1))},groupnames{groups == groups(grouppairs(g,2))});
+    thisgroupvar = groupvar(groupvar == groups(grouppairs(g,1)) | groupvar == groups(grouppairs(g,2)));
     [~,~,thisgroupvar] = unique(thisgroupvar);
     thisgroupvar = thisgroupvar-1;
-    thistestdata = testdata(groupvar == grouppairs(g,1) | groupvar == grouppairs(g,2),:,:);
+    thistestdata = testdata(groupvar == groups(grouppairs(g,1)) | groupvar == groups(grouppairs(g,2)),:,:);
     
     for d = 1:size(thistestdata,2)
         thistestdata2 = squeeze(thistestdata(:,d,:));
@@ -177,10 +176,10 @@ for g = 1:size(grouppairs,1)
     
     if strcmp(param.noplot,'off')
         fprintf('%s %s: %s vs %s AUC = %.2f, J = %.2f, p = %.4f.\n',measure,bands{bandidx},...
-            param.groupnames{grouppairs(g,1)+1},param.groupnames{grouppairs(g,2)+1},...
+            param.groupnames{grouppairs(g,1)},param.groupnames{grouppairs(g,2)},...
             auc(g,maxaucidx),(thisconfmat(2,2) + thisconfmat(1,1))/100 - 1, pval(g,maxaucidx));
         if strcmp(param.plotcm,'on')
-            plotconfusionmat(squeeze(confmat(g,maxaucidx,:,:)),{param.groupnames{grouppairs(g,1)+1},param.groupnames{grouppairs(g,2)+1}});
+            plotconfusionmat(squeeze(confmat(g,maxaucidx,:,:)),{param.groupnames{grouppairs(g,1)},param.groupnames{grouppairs(g,2)}});
             set(gca,'FontName',fontname,'FontSize',fontsize);
             if ~isempty(param.xlabel)
                 xlabel(param.xlabel,'FontName',fontname,'FontSize',fontsize);
@@ -192,7 +191,7 @@ for g = 1:size(grouppairs,1)
             else
                 ylabel('CRS-R diagnosis','FontName',fontname,'FontSize',fontsize);
             end
-            print(gcf,sprintf('%s/figures/%s_vs_%s_%s_cm.tiff',filepath,param.groupnames{grouppairs(g,1)+1},param.groupnames{grouppairs(g,2)+1},measure),'-dtiff');
+            print(gcf,sprintf('%s/figures/%s_vs_%s_%s_cm.tiff',filepath,param.groupnames{grouppairs(g,1)},param.groupnames{grouppairs(g,2)},measure),'-dtiff');
             close(gcf);
         end
     end
@@ -212,14 +211,15 @@ if strcmp(param.noplot,'off')
     hold all
     
     if isempty(param.face)
-        boxh = notBoxPlot(nanmean(testdata,2),groupvar+1,0.5,'patch',ones(size(testdata,1),1));
+        boxh = notBoxPlot(nanmean(testdata,2),groupvar,0.5,'patch',ones(size(testdata,1),1));
     else
-        boxh = notBoxPlot(nanmean(testdata,2),groupvar+1,0.5,'patch',eval(param.face));
+        boxh = notBoxPlot(nanmean(testdata,2),groupvar,0.5,'patch',eval(param.face));
     end
     
     if length(groups) > 2
         jttestdata = nanmean(testdata(groupvar < 5,:),2);
-        jtgroupvar = groupvar(groupvar < 5) + 1;
+        jtgroupvar = groupvar(groupvar < 5);
+        jtgroupvar = jtgroupvar - min(jtgroupvar) + 1;
         [jtgroupvar,sortidx] = sort(jtgroupvar);
         jttestdata = jttestdata(sortidx);
         [~,JT,pval] = evalc('jttrend([jttestdata jtgroupvar])');
@@ -233,7 +233,7 @@ if strcmp(param.noplot,'off')
     for h = 1:length(boxh)
         set(boxh(h).data,'Color',colorlist(h,:),'MarkerFaceColor',facecolorlist(h,:))
     end
-    set(gca,'XLim',[0.5 max(groups)+1.5],'XTick',1:max(groups)+1,...
+    set(gca,'XLim',[min(groups)-0.5 max(groups)+0.5],'XTick',groups,...
         'XTickLabel',groupnames','FontName',fontname,'FontSize',fontsize);
     ylabel(param.ylabel,'FontName',fontname,'FontSize',fontsize);
     if ~isempty(param.ylim)
