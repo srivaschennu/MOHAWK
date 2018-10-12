@@ -75,7 +75,7 @@ elseif strcmpi(measure,'wsmi')
 elseif strcmpi(measure,'mean')
     load(sprintf('%s/groupdata_%s.mat',filepath,listname),'allcoh');
     testdata = mean(mean(allcoh(:,bandidx,ismember({sortedlocs.labels},eval(param.changroup)),ismember({sortedlocs.labels},eval(param.changroup2))),4),3);
-elseif strcmpi(measure,'refdiag') || strcmpi(measure,'crs') || strcmpi(measure,'auditory') || strcmpi(measure,'visual') || strcmpi(measure,'motor') || ...
+elseif strcmpi(measure,'refdiag') || strcmpi(measure,'crsdiag') || strcmpi(measure,'crs') || strcmpi(measure,'auditory') || strcmpi(measure,'visual') || strcmpi(measure,'motor') || ...
         strcmpi(measure,'verbal') || strcmpi(measure,'communication') || strcmpi(measure,'arousal') || strcmpi(measure,'etiology')
     testdata = subjlist.(measure);
 else

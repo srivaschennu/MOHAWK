@@ -13,10 +13,10 @@ if exist('crsdiag','var')
     subjlist.crsdiagwithcmd = crsdiagwithcmd;
     
     uniqsubj = unique(subjnum);
-    nextcrsdiag = nan(size(crsdiag));
+    finalcrsr = nan(size(crsr));
     for s = 1:length(uniqsubj)
         subjidx = find(subjnum == uniqsubj(s));
-        nextcrsdiag(subjidx(1:end-1)) = crsdiag(subjidx(2:end));% - crsdiag(subjidx(1:end-1));
+        finalcrsr(subjidx(1)) = crsr(subjidx(end));
     end
-    subjlist.nextcrsdiag = nextcrsdiag;
+    subjlist.finalcrsdiag = finalcrsr;
 end
