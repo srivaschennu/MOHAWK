@@ -1,2 +1,2 @@
 filepath='/Volumes/bigdisk/Data/MOHAWK/';
-rawpath='/Volumes/bigdisk/Data/Liege-Sedation/';
+rawpath='/Volumes/bigdisk/Data/Liege-RestingState/';
