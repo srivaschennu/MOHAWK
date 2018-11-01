@@ -4,15 +4,10 @@ loadpaths
 
 load freqlist.mat
 
-EEG = pop_loadset([rawpath basename '.set']);
+EEG = pop_loadset([filepath basename '.set']);
 chanlocs = EEG.chanlocs;
 
 load(sprintf('sortedlocs_%d.mat',length(chanlocs)));
-
-mintrials = 50;
-if EEG.trials < mintrials
-    error('Need at least %d trials for analysis, only found %d.',mintrials,EEG.trials);
-end
 
 EEG = convertoft(EEG);
 
