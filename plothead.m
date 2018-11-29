@@ -25,7 +25,7 @@ erange = [0 1];
 vrange = [0 1]; % changes the plot scaling (colours)
 
 minfo = plotgraph3d(cohmat,'plotqt',plotqt,'escale',erange,'vscale',vrange,'cshift',0.4,...
-    'numcolors',5,'arcs',param.arcs,'lhfactor',1,'athick',0.25);
+    'numcolors',5,'arcs',param.arcs,'lhfactor',1,'athick',.75);
 fprintf('%s: %s band - number of modules: %d\n',basename,bands{bandidx},length(unique(minfo)));
 set(gcf,'Name',sprintf('%s: %s band',basename,bands{bandidx}));
 

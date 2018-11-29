@@ -88,7 +88,7 @@ else
 end
 
 plotvals = cat(1,groupvals,patvals);
-groupnames = cat(1,groupnames,{'PAT'});
+groupnames = cat(1,groupnames,{'Patient'});
 
 figure('Color','white','Name',basename)
 plotgroups = [grp(selpatidx); max(grp(selpatidx))+1];
@@ -109,5 +109,5 @@ if ~isempty(param.ylim)
     ylim(param.ylim);
 end
 
-print(gcf,sprintf('%s/figures/%s_%s_%s.tif',filepath,basename,measure,bands{bandidx}),'-dtiff','-r150');
+print(gcf,sprintf('%s/figures/%s_%s_%s.tif',filepath,basename,measure,bands{bandidx}),'-dtiff','-r300');
 close(gcf);
