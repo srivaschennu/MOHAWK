@@ -273,6 +273,7 @@ testnewpat = {
     'AnMa_mohawk'
     };
 
+allpat = cat(1,patlist,newpatlist(2:end,:));
 allsubj = cat(1,patlist,assc,ctrllist(2:end,:));
 allnewsubj = cat(1,patlist,assc,newpatlist(2:end,:),ctrllist(2:end,:));
 
