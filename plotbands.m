@@ -39,12 +39,10 @@ load(sprintf('%s/groupdata_%s.mat',filepath,listname));
 
 weiorbin = 2;
 
-groups = [0 1 2 3 5];
+groups = [0 1 5];
 groupnames = {
     'UWS'
-    'MCS-'
-    'MCS+'
-    'EMCS'
+    'MCS'
     'CTRL'
     };
 
