@@ -33,11 +33,11 @@ end
 
 % erange = [min(nonzeros(threshcoh(:))) max(threshcoh(:))];
 % vrange = [min(nonzeros(groupdeg(:))) max(groupdeg(:))];
-erange = [0 0.5];
+erange = [0 0.4];
 vrange = [0 0.4];
 
 for g = size(groupcoh,1):-1:1
-    minfo(g,:) = plotgraph3d(squeeze(groupcoh(g,:,:)),'plotqt',plotqt,'escale',erange,'vscale',vrange,'arcs','module');
+    minfo(g,:) = plotgraph3d(squeeze(groupcoh(g,:,:)),'plotqt',plotqt,'escale',erange,'vscale',vrange,'arcs','strength');
     
     camva(8);
     camtarget([-9.7975  -28.8277   41.8981]);
