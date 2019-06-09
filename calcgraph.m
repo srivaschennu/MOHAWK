@@ -1,11 +1,49 @@
 function calcgraph(basename,varargin)
 
+% Copyright (C) 2018 Srivas Chennu, University of Kent and University of Cambrige,
+% srivas@gmail.com
+% 
+% 
+% Binarise connectivity matrices and calculate graph theoretic metrics
+% capturing micro-, meso- and macro-scale properties of the matrices
+% modelled as networks. Accepts optional input argument, heuristic,
+% specifiying the number of times to calculate and average over heuristic
+% graph-theory metrics like modularity and derivatives like participation
+% coefficient. Default value of heuristic is 50.
+%
+% For more, see [1,2]
+% 
+% [1] Chennu S, Annen J, Wannez S, Thibaut A, Chatelle C, Cassol H, et al.
+% Brain networks predict metabolism, diagnosis and prognosis at the bedside
+% in disorders of consciousness. Brain. 2017;140(8):2120-32.
+
+% [2] Chennu S, Finoia P, Kamau E, Allanson J, Williams GB, Monti MM, et al. 
+% Spectral signatures of reorganised brain networks in disorders of consciousness. 
+% PLOS Computational Biology. 2014;10(10):e1003887.
+%
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 loadpaths
 
 param = finputcheck(varargin, {
     'heuristic', 'integer', [], 50; ...
     });
 
+% proportional network density thresholds at which to threshold, binarise and
+% calculate graph theory metrics. Starts at 1 = keep all network edges, and
+% steps in decrements .025 to 0.1 = keep only 10% of strongest edges
 tvals = 1:-0.025:0.1;
 
 savename = sprintf('%s/%s_mohawk.mat',filepath,basename);
@@ -77,7 +115,7 @@ for f = 1:size(matrix,1)
         %betweenness centrality
         graphdata{6,2}(f,thresh,1:length(chanlocs)) = allbet(thresh,:);
         
-        %modular span
+        %modular span (for definition, see [2])
         graphdata{7,2}(f,thresh) = mean(allms(thresh,:));
         
         %participation coefficient

@@ -1,5 +1,26 @@
 function testind(basename,varargin)
 
+% Copyright (C) 2018 Srivas Chennu, University of Kent and University of Cambrige,
+% srivas@gmail.com
+% 
+% 
+% Tests this individual's data against a previously estimated
+% classification ensemble to generate a prediction.
+% 
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 param = finputcheck(varargin, {
     'nclsyfyrs', 'real', [], 50; ...
     });
@@ -9,10 +30,6 @@ changroups
 
 clsyfyrlist = {
     'svm-rbf_UWS_MCS-'
-%     'tree_UWS_MCS-'
-% %     'nn_UWS_MCS-'
-%     'knn_UWS_MCS-'
-%     'nbayes_UWS_MCS-'
     };
 
 weiorbin = 2;

@@ -1,5 +1,26 @@
 function [combprob,groupnames] = plotclass(basename,varargin)
 
+% Copyright (C) 2018 Srivas Chennu, University of Kent and University of Cambrige,
+% srivas@gmail.com
+% 
+% 
+% Plots classification probability of this individual, as estimated by
+% the classification ensemble.
+% 
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 loadpaths
 
 colorlist = [
@@ -35,17 +56,12 @@ groupnames = clsyfyrinfo.groupnames;
 
 %% Plot Class Probability Curves
 fig_h = figure('Color','white','Name',basename);
-% fig_h.Position(3) = fig_h.Position(3) * 1.5;
 hold all
 
 for g = 1:numgroups
     plot(combprob(:,g),'LineWidth',2,'Color',colorlist(g,:),...
         'DisplayName',sprintf('p(%s) Combined',groupnames{g}));
 end
-% for g = 1:numgroups
-%     plot(indprob(:,g),'LineWidth',0.5,'LineStyle','-.','Color',colorlist(g,:),...
-%         'DisplayName',sprintf('p(%s) Individual',groupnames{g}));
-% end
 
 legend('toggle','Location','best');
 
@@ -60,7 +76,6 @@ print(gcf,sprintf('%s/figures/%s_combprob.tif',filepath,basename),'-dtiff','-r15
 close(gcf);
 
 combprob = mean(combprob,1);
-% combprob = combprob(end,:);
 
 %% Plot Class Probability Bar Graph
 fig_h = figure('Color','white','Name',basename);

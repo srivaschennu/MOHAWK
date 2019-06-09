@@ -1,5 +1,26 @@
 function dataimport(filename,basename,datatype)
 
+% Copyright (C) 2018 Srivas Chennu, University of Kent and University of Cambrige,
+% srivas@gmail.com
+% 
+% 
+% Import data into EEGLAB format and perform basic pre-processing.
+% 
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
 loadpaths
 
 chanlocpath = '';
@@ -12,6 +33,19 @@ switch datatype
             fullfile = [filepath filename];
         end
         EEG = pop_readegi(fullfile, [],[],'auto');
+        switch EEG.nbchan
+            case 33
+                chanlocfile = 'GSN-HydroCel-33-Fidu.sfp';
+            case 65
+                chanlocfile = 'GSN-HydroCel-65-Fidu.sfp';
+            case 129
+                chanlocfile = 'GSN-HydroCel-129-Fidu.sfp';
+            case 257
+                chanlocfile = 'GSN-HydroCel-257-Fidu.sfp';
+            case 8
+                chanlocfile = 'PIB.sfp';
+        end;
+        
         EEG = fixegilocs(EEG,[chanlocpath chanlocfile]);
     case {'MFF_File','MFF_Folder'}
         fullfile = [filepath filename '.mff'];
@@ -53,9 +87,9 @@ EEG = pop_eegfiltnew(EEG, 0, lpfreq);
 fprintf('High-pass filtering above %.1fHz...\n',hpfreq);
 EEG = pop_eegfiltnew(EEG, hpfreq, 0);
 
-%Remove line noise
-fprintf('Removing line noise at 50Hz.\n');
-EEG = rmlinenoisemt(EEG);
+%Remove line noise. Change line noise frequency below if needed.
+fprintf('Removing line noise.\n');
+EEG = rmlinenoisemt(EEG, 50);
 
 EEG.setname = sprintf('%s_orig',basename);
 EEG.filename = sprintf('%s_orig.set',basename);

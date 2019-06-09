@@ -1,16 +1,36 @@
 function minfo = plotgraph3d(matrix,varargin)
 
+% Copyright (C) 2018 Srivas Chennu, University of Kent and University of Cambrige,
+% srivas@gmail.com
+% 
+% 
+% plots 3D connectivity topograph.
 % matrix - NxN symmetric connectivity matrix, where N is the number of channels
-% chanlocs - 1xN EEGLAB chanlocs structure specifying channel locations
 
 % OPTIONAL ARGUMENTS
 % plotqt - proportion of strongest edges to plot
-% minfo - 1xN module affiliation vector. Will be calculated if unspecified
+% minfo - 1xN module affiliation vector. Will be estimated if not specified
 % legend - whether or not to plot legend with max and min edge weights
 % plotinter - whether or not to plot inter-modular edges
+% 
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
 
 param = finputcheck(varargin, {
-    'plotqt', 'real', [], 0.7; ...
+    'plotqt', 'real', [], 0.3; ...
     'lhfactor', 'real', [], 1.25; ...
     'minfo', 'integer', [], []; ...
     'plotinter', 'string', {'on','off'}, 'off'; ...
@@ -28,7 +48,7 @@ matrix(isnan(matrix)) = 0;
 load(sprintf('sortedlocs_%d.mat',size(matrix,1)));
 
 %keep only top <plotqt>% of weights
-matrix = threshold_proportional(matrix,1-param.plotqt);
+matrix = threshold_proportional(matrix,param.plotqt);
 
 for c = 1:size(matrix,1)
     vsize(c) = sum(matrix(c,:))/(size(matrix,2)-1);
@@ -98,6 +118,8 @@ data2plot(chanidx) = vsize;
 [~,chanlocs3d] = headplot(data2plot,sprintf('allchanlocs_%d.spl',size(matrix,1)),...
     'electrodes','off','maplimits',[-1 1]*(1-param.cshift),'view',param.view);
 
+% The code below can be used to load a custom head mesh estimated from an
+% MRI scan.
 % load /Users/chennu/gdrive/MR_Meditation/MR_mesh.mat
 % [~,chanlocs3d] = headplot(data2plot,'/Users/chennu/gdrive/MR_Meditation/MR.spl',...
 %     'electrodes','off','maplimits',[-1 1]*(1-param.cshift),'view',param.view,'meshfile',MR_mesh);

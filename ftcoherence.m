@@ -1,5 +1,26 @@
 function ftcoherence(basename)
 
+% Copyright (C) 2018 Srivas Chennu, University of Kent and University of Cambrige,
+% srivas@gmail.com
+% 
+% 
+% Estimates dwPLI connectivity between pairs of channels in canonical
+% frequency bands specified in the file freqlist.mat.
+% 
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 loadpaths
 
 savefile = [filepath basename '_mohawk.mat'];
@@ -46,6 +67,10 @@ wpli = ft_connectivity_wpli(EEG.crsspctrm,'debias',true,'dojack',false);
 for f = 1:size(freqlist,1)
     [~, bstart] = min(abs(EEG.freq-freqlist(f,1)));
     [~, bend] = min(abs(EEG.freq-freqlist(f,2)));
+    
+    % within each frequency band, identify peak of average connectivity
+    % over all channel pairs, and use this peak frequency for  
+    % recording the connectivity between each pair
     [~,freqidx] = max(mean(wpli(:,bstart:bend),1));
     
     coh(:) = 0;
@@ -63,6 +88,7 @@ end
 matrix = matrix(:,sortidx,sortidx);
 bootmat = bootmat(:,sortidx,sortidx,:);
 
+% also save the average connectivity of each channel
 chanwpli = zeros(length(chanlocs),size(wpli,2));
 for c = 1:length(chanlocs)
     chanwpli(c,:) = mean(wpli(chanpairs(:,1) == c | chanpairs(:,2) == c,:),1);

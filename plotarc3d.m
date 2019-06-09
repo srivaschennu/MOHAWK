@@ -1,5 +1,27 @@
 function line_h = plotarc3d(pts,ht,color,linewidth)
-%plots arc from p(1) to p(2) at height h
+
+% Copyright (C) 2018 Srivas Chennu, University of Kent and University of Cambrige,
+% srivas@gmail.com
+% 
+% 
+% plots arc from vertex p(1) to vertex p(2) at height h, in the specified
+% colour and at the specified width.
+% 
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
 
 pts = cat(1,mean(pts([1 2],:),1), pts);
 pts(1,:) = pts(1,:) .* ht;

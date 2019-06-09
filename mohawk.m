@@ -1,5 +1,44 @@
 function mohawk
 
+% Copyright (C) 2018 Srivas Chennu, University of Kent and University of Cambrige,
+% srivas@gmail.com
+% 
+% 
+% Invokes the MOHAWK pipeline to process hdEEG data collected with
+% EGI systems. The pipeline estimates resting state brain connectivity, as
+% measured by dwPLI[1], in canonical frequency bands. It then visualises
+% in 3D topographs as shown in [2].
+% 
+% [1] Vinck M, Oostenveld R, van Wingerden M, Battaglia F, Pennartz CM.
+% An improved index of phase-synchronization for electrophysiological data in
+% the presence of volume-conduction, noise and sample-size bias.
+% Neuroimage. 2011;55(4):1548-65.
+% 
+% [2] Chennu S, Annen J, Wannez S, Thibaut A, Chatelle C, Cassol H, et al.
+% Brain networks predict metabolism, diagnosis and prognosis at the bedside
+% in disorders of consciousness. Brain. 2017;140(8):2120-32.
+% 
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+fig_b = banner;
+pause(3);
+if ishandle(fig_b)
+    close(fig_b);
+end
+
 mohawkpath = fileparts(mfilename('fullpath'));
 loadpathsloc = sprintf('%s%sloadpaths.m',mohawkpath,filesep);
 
@@ -8,6 +47,9 @@ if exist(loadpathsloc,'file')
 else
     filepath = userpath;
 end
+
+% Start by importing raw data in either RAW, MFF (Mac) file or MFF
+% directory (Windows)
 
 datatypes = {
     'RAW', '*.raw', 'EGI RAW file'
@@ -54,7 +96,9 @@ if (strcmp(datatypes{datatype,1},'MFF_Folder') || strcmp(datatypes{datatype,1},'
     end
 end
 
+
 fprintf('\n*** IMPORTING %s ***\n',datatypes{datatype,3});
+
 if strcmp(datatypes{datatype,1},'MFF_Folder')
     filename = uigetdir(filepath);
     if isempty(filename)
@@ -75,6 +119,7 @@ else
     end
 end
 
+% Specify a name for the final file
 answers = inputdlg2({'Specify dataset base name:'},'MOHAWK Dataset',1,{filename});
 
 if isempty(answers)
@@ -96,61 +141,80 @@ end
 cur_wd = pwd;
 cd(mohawkpath);
 
+% Import the selected file into EEGLAB
 fprintf('\n*** IMPORTING DATA ***\n');
 %% 
 dataimport(filename,basename,datatypes{datatype,1});
 %% 
 
+% Epoch data into 10 sec epochs
 fprintf('\n*** EPOCHING DATA ***\n');
 epochdata(basename);
 
-%% MANUAL
+%% MANUAL STEP
+% First pass of quasi-automatic rejection of noisy channels and epochs based on variance
+% thresholding
 fprintf('\n*** SELECT BAD CHANNELS AND TRIALS ***\n');
 rejartifacts([basename '_epochs'], 1, 4, 1);
 %%
 
 fprintf('\n*** COMPUTING IC DECOMPOSITION ***\n');
+% Run ICA decomposition with optional PCA pre-processing
 computeic([basename '_epochs'])
 
 %% MANUAL
 fprintf('\n*** SELECT BAD ICs ***\n');
+% Visually identify and reject noisy ICs, e.g., eye movements, muscle
+% activity, etc.
 rejectic(basename, 'prompt', 'off')
 
 %% MANUAL
+% Second and final pass of quasi-automatic rejection of noisy channels and epochs based on variance
+% thresholding, to remove any remaining noisy data.
 fprintf('\n*** SELECT ANY REMAINING BAD CHANNELS AND TRIALS AND INTERPOLATE ***\n');
 rejartifacts([basename '_clean'], 2, 4, 0, [], 500, 250);
 %%
 
 fprintf('\n*** REFERENCING DATA TO COMMON AVERAGE ***\n');
+% re-reference data to common average for connectivity estimation.
 rereference(basename, 1);
 
 fprintf('\n*** RETAINING 10 MINUTES (60 EPOCHS) OF DATA ***\n');
+% optionally fix number of epochs contributing to connectivity estimation.
+% 60 epochs below will effectively use 10 minutes of clean data.
 checktrials(basename,60,'');
 
 fprintf('\n*** CALCULATING MULTITAPER SPECTRUM ***\n');
+% calculate power spectrum using the multi-taper method
 calcftspec(basename);
 
 fprintf('\n*** PLOTTING SPECTRUM ***\n');
+% visualise and save the power spectrum of all channels
 plotftspec(basename);
 
 fprintf('\n*** CALCULATING CONNECTIVITY ***\n');
+% estimate dwPLI connectivity between pairs of channels
 ftcoherence(basename);
 
 fprintf('\n*** CALCULATING GRAPH-THEORETIC NETWORK METRICS ***\n');
+% calculate graph theory metrics
 calcgraph(basename);
 
 fprintf('\n*** PLOTTING MOHAWK ***\n');
+% plot 3D connectivity topographs in the delta, theta and alpha bands.
 plothead(basename,1);
 plothead(basename,2);
 plothead(basename,3);
 
-fprintf('\n*** PLOTTING METRICS ***\n');
-plotmetric(basename,'participation coefficient',3,'ylabel','Network centrality')
-plotbands(basename,'participation coefficient','title','Network centrality');
+% The steps below require previously prepared group datasets
+% fprintf('\n*** PLOTTING METRICS ***\n');
+% plotmetric(basename,'participation coefficient',3,'ylabel','Network centrality')
+% plotbands(basename,'participation coefficient','title','Network centrality');
 
-fprintf('\n*** RUNNING CLASSIFIER ***\n');
-testind(basename);
-plotclass(basename);
+% The steps below requires a previouly estimated classification ensemble.
+% fprintf('\n*** RUNNING CLASSIFIER ***\n');
+% testind(basename);
+% plotclass(basename);
 
 fprintf('\n*** DONE! ***\n');
 

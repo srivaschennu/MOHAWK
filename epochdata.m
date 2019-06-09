@@ -4,7 +4,8 @@ loadpaths
 
 EEG = pop_loadset('filepath',filepath,'filename',[basename '_orig.set']);
 
-epochlength = 10; %sec
+% Length of each epoch in seconds
+epochlength = 10;
 
 events = (0:epochlength:EEG.xmax)';
 events = cat(2,repmat({'EVNT'},length(events),1),num2cell(events));
@@ -17,8 +18,6 @@ EEG = eeg_checkset(EEG,'eventconsistency');
 
 fprintf('\nSegmenting into %d sec epochs.\n',epochlength);
 EEG = pop_epoch(EEG,{'EVNT'},[0 epochlength]);
-
-% EEG = eeg_detrend(EEG);
 
 EEG = pop_rmbase(EEG,[]);
 
