@@ -23,9 +23,6 @@ function dataimport(filename,basename,datatype)
 
 loadpaths
 
-chanlocpath = '';
-chanlocfile = 'GSN-HydroCel-257-Fidu.sfp';
-
 switch datatype
     case 'RAW'
         fullfile = [filepath filename '.raw'];
@@ -44,8 +41,8 @@ switch datatype
                 chanlocfile = 'GSN-HydroCel-257-Fidu.sfp';
             case 8
                 chanlocfile = 'PIB.sfp';
-        end;
-        
+        end
+        chanlocpath = which(chanlocfile);
         EEG = fixegilocs(EEG,[chanlocpath chanlocfile]);
     case {'MFF_File','MFF_Folder'}
         fullfile = [filepath filename '.mff'];
