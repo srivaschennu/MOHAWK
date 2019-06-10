@@ -22,7 +22,7 @@ function varargout = banner(varargin)
 
 % Edit the above text to modify the response to help banner
 
-% Last Modified by GUIDE v2.5 09-Jun-2019 23:53:40
+% Last Modified by GUIDE v2.5 10-Jun-2019 22:48:30
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -114,4 +114,21 @@ function axes5_CreateFcn(hObject, eventdata, handles)
 % handles    empty - handles not created until after all CreateFcns called
 
 % Hint: place code in OpeningFcn to populate axes5
+
+
+
+% --- Executes during object deletion, before destroying properties.
+function axes6_DeleteFcn(hObject, eventdata, handles)
+% hObject    handle to axes6 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes during object creation, after setting all properties.
+function axes6_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes6 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: place code in OpeningFcn to populate axes6
 imshow(imread('mohawk.jpg'));

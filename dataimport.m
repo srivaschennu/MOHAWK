@@ -29,21 +29,21 @@ switch datatype
         if ~exist(fullfile,'file')
             fullfile = [filepath filename];
         end
-        EEG = pop_readegi(fullfile, [],[],'auto');
+        EEG = pop_readegi(fullfile, [],[],[]);
         switch EEG.nbchan
-            case 33
+            case 32
                 chanlocfile = 'GSN-HydroCel-33-Fidu.sfp';
-            case 65
+            case 64
                 chanlocfile = 'GSN-HydroCel-65-Fidu.sfp';
-            case 129
+            case 128
                 chanlocfile = 'GSN-HydroCel-129-Fidu.sfp';
-            case 257
+            case 256
                 chanlocfile = 'GSN-HydroCel-257-Fidu.sfp';
             case 8
                 chanlocfile = 'PIB.sfp';
         end
-        chanlocpath = which(chanlocfile);
-        EEG = fixegilocs(EEG,[chanlocpath chanlocfile]);
+        chanlocfile = which(chanlocfile);
+        EEG = fixegilocs(EEG,chanlocfile);
     case {'MFF_File','MFF_Folder'}
         fullfile = [filepath filename '.mff'];
         if ~exist(fullfile,'file')
