@@ -49,12 +49,13 @@ else
 end
 
 % Start by importing raw data in either RAW, MFF (Mac) file or MFF
-% directory (Windows)
+% directory (Windows), or BrainVision format (e.g. ANTNeuro)
 
 datatypes = {
+    'BrainVision', '*.vhdr', 'BrainVision .vhdr'
     'RAW', '*.raw', 'EGI RAW file'
     'MFF_File', '*.mff', 'EGI MFF file'
-    'MFF_Folder', '', 'EGI MFF folder'
+    'MFF_Folder', '', 'EGI MFF folder'    
     };
 
 [datatype,ok] = listdlg2('PromptString','Select type of dataset to import:',...

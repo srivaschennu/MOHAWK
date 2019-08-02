@@ -1,2 +1,1 @@
-filepath='/Volumes/bigdisk/Data/MOHAWK/';
-rawpath='/Volumes/bigdisk/Data/Liege-RestingState/';
+filepath='/Users/crused/Dropbox/MATLAB/Cleopatra_Project/Data/s_01/eeg/';
