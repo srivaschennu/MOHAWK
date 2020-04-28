@@ -22,9 +22,9 @@ function dataimport(filename,basename,datatype)
 
 
 loadpaths
-
+do_high_pass = true;
 switch datatype
-    case 'RAW'
+    case {'RAW','EGI_binary'}
         fullfile = [filepath filename '.raw'];
         if ~exist(fullfile,'file')
             fullfile = [filepath filename];
@@ -50,6 +50,9 @@ switch datatype
             fullfile = [filepath filename];
         end
         EEG = pop_readegimff(fullfile);
+%     case 'EGI_binary' % for resting sedation data
+%         fullfile = [filepath filename];        
+%         EEG = pop_readegi(fullfile, [],[],'auto');
     case 'BrainVision'        
         if ~contains(filename,'.')
             filename = [filename '.vhdr'];
@@ -58,7 +61,10 @@ switch datatype
         % add an empty CPz channel as this is the reference
         EEG = pop_chanedit(EEG, 'append',1,'changefield',{2 'labels' 'CPz'},'setref',{'1:128' 'CPz'});
         % lookup channel locs - assumes named in 10-5 system
-        EEG = pop_chanedit(EEG, 'lookup', ['standard-10-5-cap385.elp']);        
+        EEG = pop_chanedit(EEG, 'lookup', ['standard-10-5-cap385.elp']); 
+    case 'EEGLAB'
+        EEG = pop_loadset([filename '.set'], filepath);
+        do_high_pass = false; % because LPAT acute data has already been high-pass filtered        
     otherwise
         error('Unsupported filetype %s.',datatype);
 end
@@ -69,7 +75,7 @@ EEG = eeg_checkset(EEG);
 
 %REMOVE PERIPHERAL CHANNELS
 switch datatype
-    case {'RAW','MFF_File','MFF_Folder'}
+    case {'RAW','MFF_File','MFF_Folder','EGI_binary'}
         if EEG.nbchan == 128
             chanexcl = {'E1', 'E8', 'E14', 'E17', 'E21', 'E25', 'E32', 'E38', 'E43', 'E44', 'E48', 'E49', 'E56', 'E57', 'E63', 'E64', 'E68', 'E69', 'E73', 'E74', 'E81', 'E82', 'E88', 'E89', 'E94', 'E95', 'E99', 'E100', 'E107', 'E113', 'E114', 'E119', 'E120', 'E121', 'E125', 'E126', 'E127', 'E128'};
         elseif EEG.nbchan == 256
@@ -77,9 +83,44 @@ switch datatype
         else
             error('Invalid number of chanels found in data: %d.', EEG.nbchan);
         end
+        
+        %ask about 10-20
+        chan_subset = questdlg('Do you want to select only the 10-20 channels?','10-20?','Yes','No','No');
+        switch chan_subset            
+            case 'Yes'         
+            % 10-20 from EGI 129
+            chaninc = {'E22' 'E9' 'E33' 'E24' 'E11' 'E124' 'E122' 'E45' 'E36' 'E104' 'E108' 'E58' 'E52' 'E62' 'E92' 'E96' 'E70' 'E83'};
+            EEG = pop_select(EEG,'channel',chaninc);        
+        end
+        
     case 'BrainVision'
-        chanexcl = {'HEOGR','HEOGL','VEOGU','VEOGL','M1','M2'};
+        chanexcl = {'HEOGR','HEOGL','VEOGU','VEOGL','M1','M2','BIP1','BIP2'};
+        
+        %% ONLY FOR TESTING 10-20 !!!
+        chan_subset = questdlg('Do you want to select only the 10-20 channels?','10-20?','Yes','No','No');
+        switch chan_subset            
+            case 'Yes'
+                % NB for some systems (i.e. ANT), T3=T7, T4=T8, T5=P7,
+                % T6=P8. Our files are based on the T3 version so here we
+                % change them to match
+                new_ch_name = {'T3','T4','T5','T6'};
+                old_ch_name = {'T7','T8','P7','P8'};
+                
+                for ch_name_idx = 1:length(old_ch_name)
+                    chanidx = find(strcmp(old_ch_name(ch_name_idx),{EEG.chanlocs.labels}));
+                    if ~isempty(chanidx)
+                        EEG.chanlocs(chanidx).labels = new_ch_name{ch_name_idx};
+                    end                    
+                end
+                
+                chaninc = {'Fp1','Fp2','F7','F3','Fz','F4','F8','T3','C3','Cz','C4','T4','T5','P3','Pz','P4','T6','O1','O2'};
+                EEG = pop_select(EEG,'channel',chaninc);        
+        end
+    case 'EEGLAB'
+        chanexcl = {'ECG', 'A1', 'A2'};        
+        
 end
+
 EEG = pop_select(EEG,'nochannel',chanexcl);
 
 %REDUCE SAMPLING RATE TO 250HZ
@@ -95,8 +136,11 @@ hpfreq = 0.5;
 lpfreq = 45;
 fprintf('Low-pass filtering below %.1fHz...\n',lpfreq);
 EEG = pop_eegfiltnew(EEG, 0, lpfreq);
-fprintf('High-pass filtering above %.1fHz...\n',hpfreq);
-EEG = pop_eegfiltnew(EEG, hpfreq, 0);
+
+if do_high_pass
+    fprintf('High-pass filtering above %.1fHz...\n',hpfreq);
+    EEG = pop_eegfiltnew(EEG, hpfreq, 0);
+end
 
 %Remove line noise. Change line noise frequency below if needed.
 fprintf('Removing line noise.\n');

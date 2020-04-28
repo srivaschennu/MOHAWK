@@ -1,1 +1,1 @@
-filepath='/Users/crused/Dropbox/MATLAB/Cleopatra_Project/Data/s_01/eeg/';
+filepath='/Users/crused/Dropbox/LPAT_MOHAWK/Sedation-RestingState/';

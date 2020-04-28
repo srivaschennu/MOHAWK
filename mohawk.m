@@ -52,10 +52,12 @@ end
 % directory (Windows), or BrainVision format (e.g. ANTNeuro)
 
 datatypes = {
+    'EEGLAB', '*.set', 'EEGLAB .set'
     'BrainVision', '*.vhdr', 'BrainVision .vhdr'
     'RAW', '*.raw', 'EGI RAW file'
     'MFF_File', '*.mff', 'EGI MFF file'
-    'MFF_Folder', '', 'EGI MFF folder'    
+    'MFF_Folder', '', 'EGI MFF folder'   
+    'EGI_binary', '*.*', 'EGI Binary File'
     };
 
 [datatype,ok] = listdlg2('PromptString','Select type of dataset to import:',...
@@ -97,7 +99,6 @@ if (strcmp(datatypes{datatype,1},'MFF_Folder') || strcmp(datatypes{datatype,1},'
     end
 end
 
-
 fprintf('\n*** IMPORTING %s ***\n',datatypes{datatype,3});
 
 if strcmp(datatypes{datatype,1},'MFF_Folder')
@@ -115,9 +116,9 @@ else
     end
     
     [filename,ext] = strtok(filename,'.');
-    if ~any(strcmp(['*' ext],datatypes(1:end-1,2)))
-        error('Unrecognised filetype: %s', ext);
-    end
+%     if ~any(strcmp(['*' ext],datatypes(1:end-1,2)))
+%         error('Unrecognised filetype: %s', ext);
+%     end
 end
 
 % Specify a name for the final file

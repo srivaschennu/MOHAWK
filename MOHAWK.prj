@@ -1,9 +1,9 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="1739154346" file="/Users/chennu/Work/MOHAWK/MOHAWK.prj" location="/Users/chennu/Work/MOHAWK" name="MOHAWK" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="1739154346" file="/Users/crused/Dropbox/MATLAB/MOHAWK/MOHAWK/MOHAWK.prj" location="/Users/crused/Dropbox/MATLAB/MOHAWK/MOHAWK" name="MOHAWK" target="target.mlapps" target-name="Package App">
     <param.appname>MOHAWK</param.appname>
-    <param.authnamewatermark>Srivas Chennu</param.authnamewatermark>
+    <param.authnamewatermark />
     <param.email>srivas@gmail.com</param.email>
-    <param.company>University of Kent</param.company>
+    <param.company />
     <param.icon>${PROJECT_ROOT}/MOHAWK_resources/icon_24.png</param.icon>
     <param.icons>
       <file>${PROJECT_ROOT}/MOHAWK_resources/icon_48.png</file>
@@ -12,7 +12,7 @@
     </param.icons>
     <param.summary />
     <param.description />
-    <param.screenshot>/Users/chennu/gdrive/Media/mohawk.png</param.screenshot>
+    <param.screenshot />
     <param.version>1.1</param.version>
     <param.products.name>
       <item>MATLAB</item>
@@ -23,17 +23,18 @@
       <item>8</item>
     </param.products.id>
     <param.products.version>
-      <item>9.5</item>
-      <item>8.1</item>
+      <item>9.1</item>
+      <item>7.3</item>
     </param.products.version>
     <param.platforms />
-    <param.output>/Users/chennu/Work/MOHAWK</param.output>
+    <param.output>/Users/crused/Dropbox/MATLAB/MOHAWK/MOHAWK</param.output>
     <param.guid>11035a40-2830-4b3d-8563-313d36246cae</param.guid>
     <unset>
       <param.authnamewatermark />
       <param.company />
       <param.summary />
       <param.description />
+      <param.screenshot />
       <param.platforms />
       <param.output />
     </unset>
@@ -761,17 +762,6 @@
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/rmsubfield.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/setsubfield.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/tokenize.m</file>
-      <file>${PROJECT_ROOT}/calcftspec.m</file>
-      <file>${PROJECT_ROOT}/calcgraph.m</file>
-      <file>${PROJECT_ROOT}/checktrials.m</file>
-      <file>${PROJECT_ROOT}/dataimport.m</file>
-      <file>${PROJECT_ROOT}/epochdata.m</file>
-      <file>${PROJECT_ROOT}/ftcoherence.m</file>
-      <file>${PROJECT_ROOT}/headplot.m</file>
-      <file>${PROJECT_ROOT}/plotarc3d.m</file>
-      <file>${PROJECT_ROOT}/plotftspec.m</file>
-      <file>${PROJECT_ROOT}/plotgraph3d.m</file>
-      <file>${PROJECT_ROOT}/plothead.m</file>
       <file>/Users/chennu/Work/preprocessing/computeic.m</file>
       <file>/Users/chennu/Work/preprocessing/getneighbours.m</file>
       <file>/Users/chennu/Work/preprocessing/lar.m</file>
@@ -794,6 +784,17 @@
       <file>/Users/chennu/Work/scripts/mapping/radtodeg.m</file>
       <file>/Users/chennu/Work/scripts/mapping/toRadians.m</file>
       <file>/Users/chennu/Work/scripts/mybinica.m</file>
+      <file>${PROJECT_ROOT}/calcftspec.m</file>
+      <file>${PROJECT_ROOT}/calcgraph.m</file>
+      <file>${PROJECT_ROOT}/checktrials.m</file>
+      <file>${PROJECT_ROOT}/dataimport.m</file>
+      <file>${PROJECT_ROOT}/epochdata.m</file>
+      <file>${PROJECT_ROOT}/ftcoherence.m</file>
+      <file>${PROJECT_ROOT}/headplot.m</file>
+      <file>${PROJECT_ROOT}/plotarc3d.m</file>
+      <file>${PROJECT_ROOT}/plotftspec.m</file>
+      <file>${PROJECT_ROOT}/plotgraph3d.m</file>
+      <file>${PROJECT_ROOT}/plothead.m</file>
     </fileset.depfun>
     <fileset.resources>
       <file>/Users/chennu/MATLAB/eeglab/Contents.m</file>
@@ -904,15 +905,6 @@
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/private/memprofile.mexglx</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/private/memprofile.mexmaci</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/private/memprofile.mexmaci64</file>
-      <file>${PROJECT_ROOT}/allchanlocs_173.spl</file>
-      <file>${PROJECT_ROOT}/allchanlocs_91.spl</file>
-      <file>${PROJECT_ROOT}/banner.fig</file>
-      <file>${PROJECT_ROOT}/banner.m</file>
-      <file>${PROJECT_ROOT}/freqlist.mat</file>
-      <file>${PROJECT_ROOT}/mohawk.jpg</file>
-      <file>${PROJECT_ROOT}/plotgraph3d_cc.m</file>
-      <file>${PROJECT_ROOT}/sortedlocs_173.mat</file>
-      <file>${PROJECT_ROOT}/sortedlocs_91.mat</file>
       <file>/Users/chennu/Work/mffimport/GSN-HydroCel-129-Fidu.sfp</file>
       <file>/Users/chennu/Work/mffimport/GSN-HydroCel-257-Fidu.sfp</file>
       <file>/Users/chennu/Work/mffimport/GSN-HydroCel-33-Fidu.sfp</file>
@@ -926,21 +918,42 @@
       <file>/Users/chennu/Work/scripts/VisEd1.0/fig_EditEvent.m</file>
       <file>/Users/chennu/Work/scripts/VisEd1.0/pop_VisEd.m</file>
       <file>/Users/chennu/Work/scripts/VisEd1.0/pop_fig_EditEvent.m</file>
+      <file>${PROJECT_ROOT}/allchanlocs_173.spl</file>
+      <file>${PROJECT_ROOT}/allchanlocs_91.spl</file>
+      <file>${PROJECT_ROOT}/banner.fig</file>
+      <file>${PROJECT_ROOT}/banner.m</file>
+      <file>${PROJECT_ROOT}/freqlist.mat</file>
+      <file>${PROJECT_ROOT}/mohawk.jpg</file>
+      <file>${PROJECT_ROOT}/plotgraph3d_cc.m</file>
+      <file>${PROJECT_ROOT}/sortedlocs_173.mat</file>
+      <file>${PROJECT_ROOT}/sortedlocs_91.mat</file>
     </fileset.resources>
     <fileset.package />
     <build-deliverables>
-      <file location="/Users/chennu/Work" name="MOHAWK" optional="false">/Users/chennu/Work/MOHAWK</file>
+      <file location="/Users/crused/Dropbox/MATLAB/MOHAWK" name="MOHAWK" optional="false">/Users/crused/Dropbox/MATLAB/MOHAWK/MOHAWK</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>/Applications/MATLAB_R2018b.app</root>
+      <root>/Applications/MATLAB_R2016b.app</root>
       <toolboxes>
-        <toolbox name="neuralnetwork" />
+        <toolbox name="fixedpoint" />
+        <toolbox name="matlabcoder" />
+        <toolbox name="embeddedcoder" />
       </toolboxes>
       <toolbox>
-        <neuralnetwork>
+        <fixedpoint>
           <enabled>true</enabled>
-        </neuralnetwork>
+        </fixedpoint>
+      </toolbox>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+      <toolbox>
+        <embeddedcoder>
+          <enabled>true</enabled>
+        </embeddedcoder>
       </toolbox>
     </matlab>
     <platform>
@@ -952,7 +965,7 @@
       <vista>false</vista>
       <linux>false</linux>
       <solaris>false</solaris>
-      <osver>10.14.5</osver>
+      <osver>10.12.6</osver>
       <os32>false</os32>
       <os64>true</os64>
       <arch>maci64</arch>
