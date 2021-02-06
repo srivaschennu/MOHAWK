@@ -1,2 +1,1 @@
-filepath='/Volumes/bigdisk/Data/MOHAWK/';
-rawpath='/Volumes/bigdisk/Data/Liege-RestingState/';
+filepath='/Users/crused/Dropbox/LPAT_MOHAWK/Sedation-RestingState/';
