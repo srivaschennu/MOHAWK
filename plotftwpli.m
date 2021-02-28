@@ -17,8 +17,8 @@ savefile = sprintf('%s%s_mohawk.mat',filepath,basename);
 
 specinfo = load(savefile);
 figure('Name',basename,'Color','white'); hold all
-plot(specinfo.freq,mean(specinfo.chanwpli,1),'LineWidth',2);
-set(gca,'XLim',[specinfo.freq(1) specinfo.freq(end)],'FontSize',fontsize,'FontName',fontname);
+plot(specinfo.freqs,mean(specinfo.chanwpli,1),'LineWidth',2);
+set(gca,'XLim',[specinfo.freqs(1) specinfo.freqs(end)],'FontSize',fontsize,'FontName',fontname);
 
 xlabel('Frequency (Hz)','FontSize',fontsize,'FontName',fontname);
 ylabel('WPLI','FontSize',fontsize,'FontName',fontname);
