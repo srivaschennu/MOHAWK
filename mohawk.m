@@ -53,6 +53,7 @@ end
 
 datatypes = {
     'RAW', '*.raw', 'EGI RAW file'
+    'EDF', '*.edf', 'EDF file'
     'MFF_File', '*.mff', 'EGI MFF file'
     'MFF_Folder', '', 'EGI MFF folder'
     };
