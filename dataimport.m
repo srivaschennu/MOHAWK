@@ -63,6 +63,11 @@ switch datatype
         fprintf('Retaining these channels: %s.', cell2str({EEG.chanlocs.labels}));
         fprintf('Loading default channel locations.');
         EEG = pop_chanedit(EEG, 'lookup', which('standard-10-5-cap385.elp'));
+    case 'VHDR'
+        fullfile = [filepath filename '.vhdr'];
+        EEG = pop_fileio(fullfile);
+        fprintf('Loading default channel locations.');
+        EEG = pop_chanedit(EEG, 'lookup', which('standard-10-5-cap385.elp'));
     otherwise
         error('Unsupported filetype %s.',datatype);
 end
@@ -77,6 +82,8 @@ if EEG.nbchan == 128
 elseif EEG.nbchan == 256
     chanexcl = {'E31', 'E67', 'E73', 'E82', 'E91', 'E92', 'E93', 'E94', 'E102', 'E103', 'E104', 'E105', 'E111', 'E112', 'E113', 'E114', 'E120', 'E121', 'E122', 'E123', 'E133', 'E134', 'E135', 'E136', 'E145', 'E146', 'E147', 'E148', 'E156', 'E157', 'E158', 'E165', 'E166', 'E167', 'E168', 'E174', 'E175', 'E176', 'E177', 'E187', 'E188', 'E189', 'E190', 'E199', 'E200', 'E201', 'E208', 'E209', 'E216', 'E217', 'E218', 'E219', 'E225', 'E226', 'E227', 'E228', 'E229', 'E230', 'E231', 'E232', 'E233', 'E234', 'E235', 'E236', 'E237', 'E238', 'E239', 'E240', 'E241', 'E242', 'E243', 'E244', 'E245', 'E246', 'E247', 'E248', 'E249', 'E250', 'E251', 'E252', 'E253', 'E254', 'E255', 'E256'};
 elseif EEG.nbchan == 25
+    chanexcl = []
+elseif EEG.nbchan == 127
     chanexcl = []
 else
     error('Invalid number of chanels found in data: %d.', EEG.nbchan);

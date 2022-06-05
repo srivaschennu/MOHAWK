@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="1922151623" file="/Users/chennu/Work/MOHAWK/MOHAWK.prj" location="/Users/chennu/Work/MOHAWK" name="MOHAWK" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="1847193506" file="/Volumes/bigdisk/Work/MOHAWK/MOHAWK.prj" location="/Volumes/bigdisk/Work/MOHAWK" name="MOHAWK" target="target.mlapps" target-name="Package App">
     <param.appname>MOHAWK</param.appname>
     <param.authnamewatermark>Srivas Chennu</param.authnamewatermark>
     <param.email>srivas@gmail.com</param.email>
@@ -13,7 +13,7 @@
     <param.summary />
     <param.description />
     <param.screenshot>/Users/chennu/gdrive/Media/mohawk.png</param.screenshot>
-    <param.version>1.2</param.version>
+    <param.version>1.3</param.version>
     <param.products.name>
       <item>MATLAB</item>
       <item>Signal Processing Toolbox</item>
@@ -27,7 +27,7 @@
       <item>8.1</item>
     </param.products.version>
     <param.platforms />
-    <param.output>/Users/chennu/Work/MOHAWK</param.output>
+    <param.output>/Volumes/bigdisk/Work/MOHAWK</param.output>
     <param.guid>11035a40-2830-4b3d-8563-313d36246cae</param.guid>
     <unset>
       <param.authnamewatermark />
@@ -157,6 +157,7 @@
       <file>/Users/chennu/MATLAB/eeglab/functions/popfunc/pop_chanevent.m</file>
       <file>/Users/chennu/MATLAB/eeglab/functions/popfunc/pop_editeventvals.m</file>
       <file>/Users/chennu/MATLAB/eeglab/functions/popfunc/pop_epoch.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/functions/popfunc/pop_fileio.m</file>
       <file>/Users/chennu/MATLAB/eeglab/functions/popfunc/pop_importepoch.m</file>
       <file>/Users/chennu/MATLAB/eeglab/functions/popfunc/pop_importevent.m</file>
       <file>/Users/chennu/MATLAB/eeglab/functions/popfunc/pop_loadset.m</file>
@@ -247,16 +248,21 @@
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/ft_chantype.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/ft_chanunit.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/ft_filetype.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/ft_filter_event.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/ft_read_data.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/ft_read_event.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/ft_read_header.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/ft_read_spike.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/ft_write_data.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/ReadHeader.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/appendevent.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/bigendian.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/bti2grad.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/buffer.mexmaci64</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/buffer_wait_dat.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/channelposition.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/cornerpoints.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/cstructdecode.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/ctf2grad.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/dataset2files.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/db_insert.m</file>
@@ -339,11 +345,13 @@
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/np_read_splitted_fileinfo.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/np_readdata.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/np_readfileinfo.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/np_readmarker.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/openbdf.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/pos2dim.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/pos2transform.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_4d_hdr.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_ah5_data.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_ah5_markers.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_ahdf5_hdr.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_asa.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_besa_avr.m</file>
@@ -356,27 +364,34 @@
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_brainvision_vhdr.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_bti_m4d.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_bucn_nirsdata.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_bucn_nirsevent.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_bucn_nirshdr.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_buffer_offline_data.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_buffer_offline_events.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_buffer_offline_header.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_ced_son.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_combined_ds.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_ctf_cls.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_ctf_meg4.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_ctf_res4.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_ctf_shm.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_ctf_trigger.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_deymed_dat.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_deymed_ini.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_edf.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_eeglabdata.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_eeglabevent.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_eeglabheader.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_egis_data.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_egis_header.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_erplabdata.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_erplabevent.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_erplabheader.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_eyelink_asc.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_itab_mhd.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_mclust_t.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_mff_bin.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_micromed_event.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_micromed_trc.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_mpi_dap.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_mpi_ds.m</file>
@@ -385,21 +400,26 @@
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_neuralynx_dma.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_neuralynx_ds.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_neuralynx_ncs.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_neuralynx_nev.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_neuralynx_nse.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_neuralynx_nst.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_neuralynx_nts.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_neuralynx_ntt.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_neuralynx_sdma.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_neuralynx_ttl.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_neuromag_eve.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_neuroshare.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_neurosim_evolution.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_neurosim_signals.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_neurosim_spikes.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_nex_data.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_nex_event.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_nex_header.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_nexstim_event.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_nexstim_nxe.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_nimh_cortex.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_nmc_archive_k_data.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_nmc_archive_k_event.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_nmc_archive_k_hdr.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_ns_avg.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_ns_eeg.m</file>
@@ -409,25 +429,32 @@
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_plexon_nex.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_plexon_plx.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_sbin_data.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_sbin_events.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_sbin_header.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_serial_event.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_shm_data.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_shm_event.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_shm_header.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_smi_txt.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_spike6mat_data.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_spike6mat_header.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_spmeeg_data.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_spmeeg_event.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_spmeeg_header.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_tmsi_poly5.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_tobii_tsv.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_trigger.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_videomeg_aud.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_videomeg_vid.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_wdq_data.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_wdq_header.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_yokogawa_data.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_yokogawa_data_new.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_yokogawa_event.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_yokogawa_header.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/read_yokogawa_header_new.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/readbdf.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/readmarkerfile.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/rmsubfield.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/rotate.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/sap2matlab.mexmaci64</file>
@@ -799,29 +826,32 @@
       <file>${PROJECT_ROOT}/plotftspec.m</file>
       <file>${PROJECT_ROOT}/plotgraph3d.m</file>
       <file>${PROJECT_ROOT}/plothead.m</file>
-      <file>/Users/chennu/Work/preprocessing/computeic.m</file>
-      <file>/Users/chennu/Work/preprocessing/getneighbours.m</file>
-      <file>/Users/chennu/Work/preprocessing/lar.m</file>
-      <file>/Users/chennu/Work/preprocessing/markartifacts.fig</file>
-      <file>/Users/chennu/Work/preprocessing/markartifacts.m</file>
-      <file>/Users/chennu/Work/preprocessing/rejartifacts.m</file>
-      <file>/Users/chennu/Work/preprocessing/rejectic.m</file>
-      <file>/Users/chennu/Work/preprocessing/rereference.m</file>
-      <file>/Users/chennu/Work/preprocessing/rmlinenoisemt.m</file>
-      <file>/Users/chennu/Work/scripts/cell2str.m</file>
-      <file>/Users/chennu/Work/scripts/convertoft.m</file>
-      <file>/Users/chennu/Work/scripts/mapping/checkellipsoid.m</file>
-      <file>/Users/chennu/Work/scripts/mapping/degtorad.m</file>
-      <file>/Users/chennu/Work/scripts/mapping/distance.m</file>
-      <file>/Users/chennu/Work/scripts/mapping/expandScalarInputs.m</file>
-      <file>/Users/chennu/Work/scripts/mapping/fromRadians.m</file>
-      <file>/Users/chennu/Work/scripts/mapping/geoidtst.m</file>
-      <file>/Users/chennu/Work/scripts/mapping/ignoreComplex.m</file>
-      <file>/Users/chennu/Work/scripts/mapping/num2ordinal.m</file>
-      <file>/Users/chennu/Work/scripts/mapping/parseDistAzInputs.m</file>
-      <file>/Users/chennu/Work/scripts/mapping/radtodeg.m</file>
-      <file>/Users/chennu/Work/scripts/mapping/toRadians.m</file>
-      <file>/Users/chennu/Work/scripts/mybinica.m</file>
+      <file>/Volumes/bigdisk/Work/preprocessing/computeic.m</file>
+      <file>/Volumes/bigdisk/Work/preprocessing/getneighbours.m</file>
+      <file>/Volumes/bigdisk/Work/preprocessing/lar.m</file>
+      <file>/Volumes/bigdisk/Work/preprocessing/markartifacts.fig</file>
+      <file>/Volumes/bigdisk/Work/preprocessing/markartifacts.m</file>
+      <file>/Volumes/bigdisk/Work/preprocessing/rejartifacts.m</file>
+      <file>/Volumes/bigdisk/Work/preprocessing/rejectic.m</file>
+      <file>/Volumes/bigdisk/Work/preprocessing/rereference.m</file>
+      <file>/Volumes/bigdisk/Work/preprocessing/rmlinenoisemt.m</file>
+      <file>/Volumes/bigdisk/Work/scripts/VisEd1.0/VisEd.m</file>
+      <file>/Volumes/bigdisk/Work/scripts/VisEd1.0/fig_EditEvent.m</file>
+      <file>/Volumes/bigdisk/Work/scripts/VisEd1.0/pop_fig_EditEvent.m</file>
+      <file>/Volumes/bigdisk/Work/scripts/cell2str.m</file>
+      <file>/Volumes/bigdisk/Work/scripts/convertoft.m</file>
+      <file>/Volumes/bigdisk/Work/scripts/mapping/checkellipsoid.m</file>
+      <file>/Volumes/bigdisk/Work/scripts/mapping/degtorad.m</file>
+      <file>/Volumes/bigdisk/Work/scripts/mapping/distance.m</file>
+      <file>/Volumes/bigdisk/Work/scripts/mapping/expandScalarInputs.m</file>
+      <file>/Volumes/bigdisk/Work/scripts/mapping/fromRadians.m</file>
+      <file>/Volumes/bigdisk/Work/scripts/mapping/geoidtst.m</file>
+      <file>/Volumes/bigdisk/Work/scripts/mapping/ignoreComplex.m</file>
+      <file>/Volumes/bigdisk/Work/scripts/mapping/num2ordinal.m</file>
+      <file>/Volumes/bigdisk/Work/scripts/mapping/parseDistAzInputs.m</file>
+      <file>/Volumes/bigdisk/Work/scripts/mapping/radtodeg.m</file>
+      <file>/Volumes/bigdisk/Work/scripts/mapping/toRadians.m</file>
+      <file>/Volumes/bigdisk/Work/scripts/mybinica.m</file>
     </fileset.depfun>
     <fileset.resources>
       <file>/Users/chennu/MATLAB/eeglab/Contents.m</file>
@@ -1000,18 +1030,6 @@
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/private/memprofile.mexglx</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/private/memprofile.mexmaci</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/private/memprofile.mexmaci64</file>
-      <file>${PROJECT_ROOT}/allchanlocs_173.spl</file>
-      <file>${PROJECT_ROOT}/allchanlocs_25.spl</file>
-      <file>${PROJECT_ROOT}/allchanlocs_91.spl</file>
-      <file>${PROJECT_ROOT}/banner.fig</file>
-      <file>${PROJECT_ROOT}/banner.m</file>
-      <file>${PROJECT_ROOT}/freqlist.mat</file>
-      <file>${PROJECT_ROOT}/mohawk.jpg</file>
-      <file>${PROJECT_ROOT}/plotgraph3d_cc.m</file>
-      <file>${PROJECT_ROOT}/sortedlocs_173.mat</file>
-      <file>${PROJECT_ROOT}/sortedlocs_25.mat</file>
-      <file>${PROJECT_ROOT}/sortedlocs_91.mat</file>
-      <file>${PROJECT_ROOT}/standard-10-5-cap385.elp</file>
       <file>/Users/chennu/Work/mffimport/GSN-HydroCel-129-Fidu.sfp</file>
       <file>/Users/chennu/Work/mffimport/GSN-HydroCel-257-Fidu.sfp</file>
       <file>/Users/chennu/Work/mffimport/GSN-HydroCel-33-Fidu.sfp</file>
@@ -1025,10 +1043,24 @@
       <file>/Users/chennu/Work/scripts/VisEd1.0/fig_EditEvent.m</file>
       <file>/Users/chennu/Work/scripts/VisEd1.0/pop_VisEd.m</file>
       <file>/Users/chennu/Work/scripts/VisEd1.0/pop_fig_EditEvent.m</file>
+      <file>${PROJECT_ROOT}/allchanlocs_127.spl</file>
+      <file>${PROJECT_ROOT}/allchanlocs_173.spl</file>
+      <file>${PROJECT_ROOT}/allchanlocs_25.spl</file>
+      <file>${PROJECT_ROOT}/allchanlocs_91.spl</file>
+      <file>${PROJECT_ROOT}/banner.fig</file>
+      <file>${PROJECT_ROOT}/banner.m</file>
+      <file>${PROJECT_ROOT}/freqlist.mat</file>
+      <file>${PROJECT_ROOT}/mohawk.jpg</file>
+      <file>${PROJECT_ROOT}/plotgraph3d_cc.m</file>
+      <file>${PROJECT_ROOT}/sortedlocs_127.mat</file>
+      <file>${PROJECT_ROOT}/sortedlocs_173.mat</file>
+      <file>${PROJECT_ROOT}/sortedlocs_25.mat</file>
+      <file>${PROJECT_ROOT}/sortedlocs_91.mat</file>
+      <file>${PROJECT_ROOT}/standard-10-5-cap385.elp</file>
     </fileset.resources>
     <fileset.package />
     <build-deliverables>
-      <file location="/Users/chennu/Work" name="MOHAWK" optional="false">/Users/chennu/Work/MOHAWK</file>
+      <file location="/Volumes/bigdisk/Work" name="MOHAWK" optional="false">/Volumes/bigdisk/Work/MOHAWK</file>
     </build-deliverables>
     <workflow />
     <matlab>

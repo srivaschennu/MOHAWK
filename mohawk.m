@@ -1,6 +1,6 @@
 function mohawk
 
-% Copyright (C) 2018 Srivas Chennu, University of Kent and University of Cambrige,
+% Copyright (C) 2022 Srivas Chennu, University of Kent and University of Cambrige,
 % srivas@gmail.com
 % 
 % 
@@ -55,6 +55,7 @@ datatypes = {
     'RAW', '*.raw', 'EGI RAW file'
     'EDF', '*.edf', 'EDF file'
     'MFF_File', '*.mff', 'EGI MFF file'
+    'VHDR', '*.vhdr', 'BrainProducts VHDR file'    
     'MFF_Folder', '', 'EGI MFF folder'
     };
 
@@ -115,7 +116,7 @@ else
     end
     
     [filename,ext] = strtok(filename,'.');
-    if ~any(strcmp(['*' ext],datatypes(1:end-1,2)))
+    if ~any(strcmp(['*' ext], datatypes(1:end-1,2)))
         error('Unrecognised filetype: %s', ext);
     end
 end
