@@ -68,6 +68,8 @@ switch datatype
         EEG = pop_fileio(fullfile);
         fprintf('Loading default channel locations.');
         EEG = pop_chanedit(EEG, 'lookup', which('standard-10-5-cap385.elp'));
+        fprintf('Checking for additional channels.'); 
+        EEG = pop_select(EEG,'nochannel',{'ECG'});
     otherwise
         error('Unsupported filetype %s.',datatype);
 end
