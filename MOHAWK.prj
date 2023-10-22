@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="1847193506" file="/Volumes/bigdisk/Work/MOHAWK/MOHAWK.prj" location="/Volumes/bigdisk/Work/MOHAWK" name="MOHAWK" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="1990083343" file="/Volumes/bigdisk/Work/MOHAWK/MOHAWK.prj" location="/Volumes/bigdisk/Work/MOHAWK" name="MOHAWK" target="target.mlapps" target-name="Package App">
     <param.appname>MOHAWK</param.appname>
     <param.authnamewatermark>Srivas Chennu</param.authnamewatermark>
     <param.email>srivas@gmail.com</param.email>
@@ -13,7 +13,7 @@
     <param.summary />
     <param.description />
     <param.screenshot>/Users/chennu/gdrive/Media/mohawk.png</param.screenshot>
-    <param.version>1.3</param.version>
+    <param.version>1.4</param.version>
     <param.products.name>
       <item>MATLAB</item>
       <item>Signal Processing Toolbox</item>
@@ -23,11 +23,11 @@
       <item>8</item>
     </param.products.id>
     <param.products.version>
-      <item>9.5</item>
-      <item>8.1</item>
+      <item>9.14</item>
+      <item>9.2</item>
     </param.products.version>
     <param.platforms />
-    <param.output>/Volumes/bigdisk/Work/MOHAWK</param.output>
+    <param.output>${PROJECT_ROOT}</param.output>
     <param.guid>11035a40-2830-4b3d-8563-313d36246cae</param.guid>
     <unset>
       <param.authnamewatermark />
@@ -1046,6 +1046,7 @@
       <file>${PROJECT_ROOT}/allchanlocs_127.spl</file>
       <file>${PROJECT_ROOT}/allchanlocs_173.spl</file>
       <file>${PROJECT_ROOT}/allchanlocs_25.spl</file>
+      <file>${PROJECT_ROOT}/allchanlocs_63.spl</file>
       <file>${PROJECT_ROOT}/allchanlocs_91.spl</file>
       <file>${PROJECT_ROOT}/banner.fig</file>
       <file>${PROJECT_ROOT}/banner.m</file>
@@ -1055,6 +1056,7 @@
       <file>${PROJECT_ROOT}/sortedlocs_127.mat</file>
       <file>${PROJECT_ROOT}/sortedlocs_173.mat</file>
       <file>${PROJECT_ROOT}/sortedlocs_25.mat</file>
+      <file>${PROJECT_ROOT}/sortedlocs_63.mat</file>
       <file>${PROJECT_ROOT}/sortedlocs_91.mat</file>
       <file>${PROJECT_ROOT}/standard-10-5-cap385.elp</file>
     </fileset.resources>
@@ -1064,15 +1066,8 @@
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>/Applications/MATLAB_R2018b.app</root>
-      <toolboxes>
-        <toolbox name="neuralnetwork" />
-      </toolboxes>
-      <toolbox>
-        <neuralnetwork>
-          <enabled>true</enabled>
-        </neuralnetwork>
-      </toolbox>
+      <root>/Applications/MATLAB_R2023a.app</root>
+      <toolboxes />
     </matlab>
     <platform>
       <unix>true</unix>
@@ -1083,7 +1078,7 @@
       <vista>false</vista>
       <linux>false</linux>
       <solaris>false</solaris>
-      <osver>10.16</osver>
+      <osver>12.7</osver>
       <os32>false</os32>
       <os64>true</os64>
       <arch>maci64</arch>
