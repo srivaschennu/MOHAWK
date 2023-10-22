@@ -22,7 +22,7 @@ function varargout = banner(varargin)
 
 % Edit the above text to modify the response to help banner
 
-% Last Modified by GUIDE v2.5 05-Jun-2022 19:57:44
+% Last Modified by GUIDE v2.5 21-Oct-2023 23:40:04
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -89,10 +89,10 @@ function text3_CreateFcn(hObject, eventdata, handles)
 
 
 % --- Executes during object creation, after setting all properties.
-function axes9_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to axes9 (see GCBO)
+function axes10_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes10 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
-% Hint: place code in OpeningFcn to populate axes9
+% Hint: place code in OpeningFcn to populate axes10
 imshow(imread('mohawk.jpg'));
