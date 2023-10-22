@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="1990083343" file="/Volumes/bigdisk/Work/MOHAWK/MOHAWK.prj" location="/Volumes/bigdisk/Work/MOHAWK" name="MOHAWK" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="1504473813" file="/Volumes/bigdisk/Work/MOHAWK/MOHAWK.prj" location="/Volumes/bigdisk/Work/MOHAWK" name="MOHAWK" target="target.mlapps" target-name="Package App">
     <param.appname>MOHAWK</param.appname>
     <param.authnamewatermark>Srivas Chennu</param.authnamewatermark>
     <param.email>srivas@gmail.com</param.email>
@@ -1051,6 +1051,7 @@
       <file>${PROJECT_ROOT}/banner.fig</file>
       <file>${PROJECT_ROOT}/banner.m</file>
       <file>${PROJECT_ROOT}/freqlist.mat</file>
+      <file>${PROJECT_ROOT}/mheadnew.mat</file>
       <file>${PROJECT_ROOT}/mohawk.jpg</file>
       <file>${PROJECT_ROOT}/plotgraph3d_cc.m</file>
       <file>${PROJECT_ROOT}/sortedlocs_127.mat</file>
