@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="1504473813" file="/Volumes/bigdisk/Work/MOHAWK/MOHAWK.prj" location="/Volumes/bigdisk/Work/MOHAWK" name="MOHAWK" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="1713226103" file="/Users/chennu/Work/MOHAWK/MOHAWK.prj" location="/Users/chennu/Work/MOHAWK" name="MOHAWK" target="target.mlapps" target-name="Package App">
     <param.appname>MOHAWK</param.appname>
     <param.authnamewatermark>Srivas Chennu</param.authnamewatermark>
     <param.email>srivas@gmail.com</param.email>
@@ -23,8 +23,8 @@
       <item>8</item>
     </param.products.id>
     <param.products.version>
-      <item>9.14</item>
-      <item>9.2</item>
+      <item>24.2</item>
+      <item>24.2</item>
     </param.products.version>
     <param.platforms />
     <param.output>${PROJECT_ROOT}</param.output>
@@ -136,6 +136,8 @@
       <file>/Users/chennu/MATLAB/eeglab/functions/guifunc/warndlg2.m</file>
       <file>/Users/chennu/MATLAB/eeglab/functions/miscfunc/averef.m</file>
       <file>/Users/chennu/MATLAB/eeglab/functions/miscfunc/textgui.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/functions/octavefunc/optim/fmins.m</file>
+      <file>/Users/chennu/MATLAB/eeglab/functions/octavefunc/optim/fminsearch.m</file>
       <file>/Users/chennu/MATLAB/eeglab/functions/popfunc/eeg_chaninds.m</file>
       <file>/Users/chennu/MATLAB/eeglab/functions/popfunc/eeg_chantype.m</file>
       <file>/Users/chennu/MATLAB/eeglab/functions/popfunc/eeg_decodechan.m</file>
@@ -258,7 +260,6 @@
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/appendevent.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/bigendian.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/bti2grad.m</file>
-      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/buffer.mexmaci64</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/buffer_wait_dat.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/channelposition.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/cornerpoints.m</file>
@@ -304,7 +305,6 @@
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/ft_fetch_header.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/ft_findcfg.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/ft_getopt.m</file>
-      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/ft_getopt.mexmaci64</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/ft_hastoolbox.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/ft_platform_supports.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/ft_progress.m</file>
@@ -332,11 +332,7 @@
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/match_str.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/mne2grad.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/mxDeserialize.m</file>
-      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/mxDeserialize_c.mexmaci64</file>
-      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/mxDeserialize_cpp.mexmaci64</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/mxSerialize.m</file>
-      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/mxSerialize_c.mexmaci64</file>
-      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/mxSerialize_cpp.mexmaci64</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/ndgrid.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/netmeg2grad.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/neuralynx_crc.m</file>
@@ -457,7 +453,6 @@
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/readmarkerfile.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/rmsubfield.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/rotate.m</file>
-      <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/sap2matlab.mexmaci64</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/setsubfield.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/time2offset.m</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Fileio160415/private/timestamp_neuralynx.m</file>
@@ -505,12 +500,10 @@
       <file>/Users/chennu/MATLAB/fieldtrip/@config/isfield.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/@config/private/compile_config.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/@config/private/deepcopy.m</file>
-      <file>/Users/chennu/MATLAB/fieldtrip/@config/private/deepcopy.mexmaci64</file>
       <file>/Users/chennu/MATLAB/fieldtrip/@config/private/get.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/@config/private/increment.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/@config/private/set.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/@config/private/setzero.m</file>
-      <file>/Users/chennu/MATLAB/fieldtrip/@config/private/setzero.mexmaci64</file>
       <file>/Users/chennu/MATLAB/fieldtrip/@config/rmfield.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/@config/struct.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/@config/struct2cell.m</file>
@@ -519,7 +512,6 @@
       <file>/Users/chennu/MATLAB/fieldtrip/connectivity/ft_connectivity_wpli.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/connectivity/private/defaultId.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/connectivity/private/ft_getopt.m</file>
-      <file>/Users/chennu/MATLAB/fieldtrip/connectivity/private/ft_getopt.mexmaci64</file>
       <file>/Users/chennu/MATLAB/fieldtrip/connectivity/private/ft_notification.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/connectivity/private/ft_platform_supports.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/connectivity/private/ft_progress.m</file>
@@ -527,7 +519,6 @@
       <file>/Users/chennu/MATLAB/fieldtrip/connectivity/private/istrue.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/contrib/spike/ft_spike_maketrials.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/external/fileexchange/CalcMD5.m</file>
-      <file>/Users/chennu/MATLAB/fieldtrip/external/fileexchange/CalcMD5.mexmaci64</file>
       <file>/Users/chennu/MATLAB/fieldtrip/external/fileexchange/DataHash.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/external/fileexchange/base64decode.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/external/fileexchange/base64encode.m</file>
@@ -541,7 +532,6 @@
       <file>/Users/chennu/MATLAB/fieldtrip/external/signal/private/sftrans.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/external/signal/window.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/external/stats/nanmean.m</file>
-      <file>/Users/chennu/MATLAB/fieldtrip/external/stats/nanstd.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/external/stats/nansum.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/external/stats/range.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/forward/ft_apply_montage.m</file>
@@ -557,7 +547,6 @@
       <file>/Users/chennu/MATLAB/fieldtrip/forward/private/fixoldorg.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/forward/private/ft_datatype_sens.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/forward/private/ft_getopt.m</file>
-      <file>/Users/chennu/MATLAB/fieldtrip/forward/private/ft_getopt.mexmaci64</file>
       <file>/Users/chennu/MATLAB/fieldtrip/forward/private/ft_notification.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/forward/private/ft_platform_supports.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/forward/private/ft_scalingfactor.m</file>
@@ -596,7 +585,6 @@
       <file>/Users/chennu/MATLAB/fieldtrip/plotting/private/ft_determine_units.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/plotting/private/ft_estimate_units.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/plotting/private/ft_getopt.m</file>
-      <file>/Users/chennu/MATLAB/fieldtrip/plotting/private/ft_getopt.mexmaci64</file>
       <file>/Users/chennu/MATLAB/fieldtrip/plotting/private/ft_notification.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/plotting/private/ft_platform_supports.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/plotting/private/ft_progress.m</file>
@@ -680,7 +668,6 @@
       <file>/Users/chennu/MATLAB/fieldtrip/specest/private/defaultId.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/specest/private/filter_with_correction.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/specest/private/ft_getopt.m</file>
-      <file>/Users/chennu/MATLAB/fieldtrip/specest/private/ft_getopt.mexmaci64</file>
       <file>/Users/chennu/MATLAB/fieldtrip/specest/private/ft_notification.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/specest/private/ft_platform_supports.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/specest/private/ft_preproc_bandpassfilter.m</file>
@@ -713,7 +700,6 @@
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/ft_determine_coordsys.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/ft_error.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/ft_getopt.m</file>
-      <file>/Users/chennu/MATLAB/fieldtrip/utilities/ft_getopt.mexmaci64</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/ft_hash.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/ft_hastoolbox.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/ft_info.m</file>
@@ -792,8 +778,6 @@
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/private/memprofile.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/private/mergeconfig.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/private/mxSerialize.m</file>
-      <file>/Users/chennu/MATLAB/fieldtrip/utilities/private/mxSerialize_c.mexmaci64</file>
-      <file>/Users/chennu/MATLAB/fieldtrip/utilities/private/mxSerialize_cpp.mexmaci64</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/private/pos2dim.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/private/pos2transform.m</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/private/printor.m</file>
@@ -826,32 +810,29 @@
       <file>${PROJECT_ROOT}/plotftspec.m</file>
       <file>${PROJECT_ROOT}/plotgraph3d.m</file>
       <file>${PROJECT_ROOT}/plothead.m</file>
-      <file>/Volumes/bigdisk/Work/preprocessing/computeic.m</file>
-      <file>/Volumes/bigdisk/Work/preprocessing/getneighbours.m</file>
-      <file>/Volumes/bigdisk/Work/preprocessing/lar.m</file>
-      <file>/Volumes/bigdisk/Work/preprocessing/markartifacts.fig</file>
-      <file>/Volumes/bigdisk/Work/preprocessing/markartifacts.m</file>
-      <file>/Volumes/bigdisk/Work/preprocessing/rejartifacts.m</file>
-      <file>/Volumes/bigdisk/Work/preprocessing/rejectic.m</file>
-      <file>/Volumes/bigdisk/Work/preprocessing/rereference.m</file>
-      <file>/Volumes/bigdisk/Work/preprocessing/rmlinenoisemt.m</file>
-      <file>/Volumes/bigdisk/Work/scripts/VisEd1.0/VisEd.m</file>
-      <file>/Volumes/bigdisk/Work/scripts/VisEd1.0/fig_EditEvent.m</file>
-      <file>/Volumes/bigdisk/Work/scripts/VisEd1.0/pop_fig_EditEvent.m</file>
-      <file>/Volumes/bigdisk/Work/scripts/cell2str.m</file>
-      <file>/Volumes/bigdisk/Work/scripts/convertoft.m</file>
-      <file>/Volumes/bigdisk/Work/scripts/mapping/checkellipsoid.m</file>
-      <file>/Volumes/bigdisk/Work/scripts/mapping/degtorad.m</file>
-      <file>/Volumes/bigdisk/Work/scripts/mapping/distance.m</file>
-      <file>/Volumes/bigdisk/Work/scripts/mapping/expandScalarInputs.m</file>
-      <file>/Volumes/bigdisk/Work/scripts/mapping/fromRadians.m</file>
-      <file>/Volumes/bigdisk/Work/scripts/mapping/geoidtst.m</file>
-      <file>/Volumes/bigdisk/Work/scripts/mapping/ignoreComplex.m</file>
-      <file>/Volumes/bigdisk/Work/scripts/mapping/num2ordinal.m</file>
-      <file>/Volumes/bigdisk/Work/scripts/mapping/parseDistAzInputs.m</file>
-      <file>/Volumes/bigdisk/Work/scripts/mapping/radtodeg.m</file>
-      <file>/Volumes/bigdisk/Work/scripts/mapping/toRadians.m</file>
-      <file>/Volumes/bigdisk/Work/scripts/mybinica.m</file>
+      <file>/Users/chennu/Work/preprocessing/computeic.m</file>
+      <file>/Users/chennu/Work/preprocessing/getneighbours.m</file>
+      <file>/Users/chennu/Work/preprocessing/lar.m</file>
+      <file>/Users/chennu/Work/preprocessing/markartifacts.fig</file>
+      <file>/Users/chennu/Work/preprocessing/markartifacts.m</file>
+      <file>/Users/chennu/Work/preprocessing/rejartifacts.m</file>
+      <file>/Users/chennu/Work/preprocessing/rejectic.m</file>
+      <file>/Users/chennu/Work/preprocessing/rereference.m</file>
+      <file>/Users/chennu/Work/preprocessing/rmlinenoisemt.m</file>
+      <file>/Users/chennu/Work/scripts/cell2str.m</file>
+      <file>/Users/chennu/Work/scripts/convertoft.m</file>
+      <file>/Users/chennu/Work/scripts/mapping/checkellipsoid.m</file>
+      <file>/Users/chennu/Work/scripts/mapping/degtorad.m</file>
+      <file>/Users/chennu/Work/scripts/mapping/distance.m</file>
+      <file>/Users/chennu/Work/scripts/mapping/expandScalarInputs.m</file>
+      <file>/Users/chennu/Work/scripts/mapping/fromRadians.m</file>
+      <file>/Users/chennu/Work/scripts/mapping/geoidtst.m</file>
+      <file>/Users/chennu/Work/scripts/mapping/ignoreComplex.m</file>
+      <file>/Users/chennu/Work/scripts/mapping/num2ordinal.m</file>
+      <file>/Users/chennu/Work/scripts/mapping/parseDistAzInputs.m</file>
+      <file>/Users/chennu/Work/scripts/mapping/radtodeg.m</file>
+      <file>/Users/chennu/Work/scripts/mapping/toRadians.m</file>
+      <file>/Users/chennu/Work/scripts/mybinica.m</file>
     </fileset.depfun>
     <fileset.resources>
       <file>/Users/chennu/MATLAB/eeglab/Contents.m</file>
@@ -863,7 +844,6 @@
       <file>/Users/chennu/MATLAB/eeglab/functions/sigprocfunc/matsel.m</file>
       <file>/Users/chennu/MATLAB/eeglab/functions/sigprocfunc/movav.m</file>
       <file>/Users/chennu/MATLAB/eeglab/functions/sigprocfunc/spectopo.m</file>
-      <file>/Users/chennu/MATLAB/eeglab/plugins/Biosig3.3.0/biosig/doc/11073-10102-AnnexB.txt</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Biosig3.3.0/biosig/doc/DecimalFactors.txt</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Biosig3.3.0/biosig/doc/ManufacturerInformation.cfg</file>
       <file>/Users/chennu/MATLAB/eeglab/plugins/Biosig3.3.0/biosig/doc/elecpos.txt</file>
@@ -1030,6 +1010,31 @@
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/private/memprofile.mexglx</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/private/memprofile.mexmaci</file>
       <file>/Users/chennu/MATLAB/fieldtrip/utilities/private/memprofile.mexmaci64</file>
+      <file>${PROJECT_ROOT}/allchanlocs_127.spl</file>
+      <file>${PROJECT_ROOT}/allchanlocs_173.spl</file>
+      <file>${PROJECT_ROOT}/allchanlocs_25.spl</file>
+      <file>${PROJECT_ROOT}/allchanlocs_32.spl</file>
+      <file>${PROJECT_ROOT}/allchanlocs_33.spl</file>
+      <file>${PROJECT_ROOT}/allchanlocs_63.spl</file>
+      <file>${PROJECT_ROOT}/allchanlocs_64.spl</file>
+      <file>${PROJECT_ROOT}/allchanlocs_66.spl</file>
+      <file>${PROJECT_ROOT}/allchanlocs_91.spl</file>
+      <file>${PROJECT_ROOT}/banner.fig</file>
+      <file>${PROJECT_ROOT}/banner.m</file>
+      <file>${PROJECT_ROOT}/freqlist.mat</file>
+      <file>${PROJECT_ROOT}/mheadnew.mat</file>
+      <file>${PROJECT_ROOT}/mohawk.jpg</file>
+      <file>${PROJECT_ROOT}/plotgraph3d_cc.m</file>
+      <file>${PROJECT_ROOT}/sortedlocs_127.mat</file>
+      <file>${PROJECT_ROOT}/sortedlocs_173.mat</file>
+      <file>${PROJECT_ROOT}/sortedlocs_25.mat</file>
+      <file>${PROJECT_ROOT}/sortedlocs_32.mat</file>
+      <file>${PROJECT_ROOT}/sortedlocs_33.mat</file>
+      <file>${PROJECT_ROOT}/sortedlocs_63.mat</file>
+      <file>${PROJECT_ROOT}/sortedlocs_64.mat</file>
+      <file>${PROJECT_ROOT}/sortedlocs_66.mat</file>
+      <file>${PROJECT_ROOT}/sortedlocs_91.mat</file>
+      <file>${PROJECT_ROOT}/standard-10-5-cap385.elp</file>
       <file>/Users/chennu/Work/mffimport/GSN-HydroCel-129-Fidu.sfp</file>
       <file>/Users/chennu/Work/mffimport/GSN-HydroCel-257-Fidu.sfp</file>
       <file>/Users/chennu/Work/mffimport/GSN-HydroCel-33-Fidu.sfp</file>
@@ -1043,31 +1048,14 @@
       <file>/Users/chennu/Work/scripts/VisEd1.0/fig_EditEvent.m</file>
       <file>/Users/chennu/Work/scripts/VisEd1.0/pop_VisEd.m</file>
       <file>/Users/chennu/Work/scripts/VisEd1.0/pop_fig_EditEvent.m</file>
-      <file>${PROJECT_ROOT}/allchanlocs_127.spl</file>
-      <file>${PROJECT_ROOT}/allchanlocs_173.spl</file>
-      <file>${PROJECT_ROOT}/allchanlocs_25.spl</file>
-      <file>${PROJECT_ROOT}/allchanlocs_63.spl</file>
-      <file>${PROJECT_ROOT}/allchanlocs_91.spl</file>
-      <file>${PROJECT_ROOT}/banner.fig</file>
-      <file>${PROJECT_ROOT}/banner.m</file>
-      <file>${PROJECT_ROOT}/freqlist.mat</file>
-      <file>${PROJECT_ROOT}/mheadnew.mat</file>
-      <file>${PROJECT_ROOT}/mohawk.jpg</file>
-      <file>${PROJECT_ROOT}/plotgraph3d_cc.m</file>
-      <file>${PROJECT_ROOT}/sortedlocs_127.mat</file>
-      <file>${PROJECT_ROOT}/sortedlocs_173.mat</file>
-      <file>${PROJECT_ROOT}/sortedlocs_25.mat</file>
-      <file>${PROJECT_ROOT}/sortedlocs_63.mat</file>
-      <file>${PROJECT_ROOT}/sortedlocs_91.mat</file>
-      <file>${PROJECT_ROOT}/standard-10-5-cap385.elp</file>
     </fileset.resources>
     <fileset.package />
     <build-deliverables>
-      <file location="/Volumes/bigdisk/Work" name="MOHAWK" optional="false">/Volumes/bigdisk/Work/MOHAWK</file>
+      <file location="/Users/chennu/Work" name="MOHAWK" optional="false">/Users/chennu/Work/MOHAWK</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>/Applications/MATLAB_R2023a.app</root>
+      <root>/Applications/MATLAB_R2024b.app</root>
       <toolboxes />
     </matlab>
     <platform>
@@ -1079,9 +1067,9 @@
       <vista>false</vista>
       <linux>false</linux>
       <solaris>false</solaris>
-      <osver>12.7</osver>
-      <os32>false</os32>
-      <os64>true</os64>
+      <osver>15.5</osver>
+      <os32>true</os32>
+      <os64>false</os64>
       <arch>maci64</arch>
       <matlab>true</matlab>
     </platform>
