@@ -118,5 +118,7 @@ EEG.filepath = filepath;
 
 EEG = eeg_checkset(EEG);
 
+EEG.chaninfo.refchan = "REFCZ";
+
 fprintf('Saving %s%s.\n', EEG.filepath, EEG.filename);
 pop_saveset(EEG,'filename', EEG.filename, 'filepath', EEG.filepath);

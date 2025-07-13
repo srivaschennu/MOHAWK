@@ -41,9 +41,9 @@ load([filepath filesep basename '_mohawk.mat']);
 plotqt = 0.3;
 
 % rescale edge weights to the range below before plotting
-erange = [0 1];
+erange = [0 1.25];
 % rescale vertex weights to the range below before plotting
-vrange = [0 1];
+vrange = [0 1.25];
 
 bands = {
     'delta'
@@ -56,7 +56,7 @@ bands = {
 cohmat = squeeze(matrix(bandidx,:,:));
 
 minfo = plotgraph3d(cohmat,'plotqt',plotqt,'escale',erange,'vscale',vrange,'cshift',0.4,...
-    'numcolors',5,'arcs',param.arcs,'lhfactor',1,'athick',.75);
+    'numcolors',4,'arcs',param.arcs,'lhfactor',1,'athick',.75);
 fprintf('%s: %s band - number of modules: %d\n',basename,bands{bandidx},length(unique(minfo)));
 set(gcf,'Name',sprintf('%s: %s band',basename,bands{bandidx}));
 

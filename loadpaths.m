@@ -1,1 +1,1 @@
-filepath='/Volumes/bigdisk/Data/Danuta/';
+filepath='/Users/chennu/Desktop/Fed/';
