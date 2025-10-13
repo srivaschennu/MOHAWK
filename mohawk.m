@@ -56,6 +56,7 @@ datatypes = {
     'EDF', '*.edf', 'EDF file'
     'MFF_File', '*.mff', 'EGI MFF file'
     'VHDR', '*.vhdr', 'BrainProducts VHDR file'    
+    'EEGLAB', '*.set', 'EEGLAB file'
     'MFF_Folder', '', 'EGI MFF folder'
     };
 

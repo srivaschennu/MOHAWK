@@ -72,6 +72,8 @@ switch datatype
         EEG = pop_chanedit(EEG, 'lookup', which('standard-10-5-cap385.elp'));
         fprintf('Removing ECG channels, if any.'); 
         EEG = pop_select(EEG,'nochannel',{'ECG'});
+    case 'EEGLAB'
+        EEG = pop_loadset('filepath', filepath, 'filename', [filename '.set']);
     otherwise
         error('Unsupported filetype %s.',datatype);
 end
