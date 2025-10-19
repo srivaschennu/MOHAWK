@@ -28,7 +28,7 @@ EEG = pop_loadset('filepath',rawpath,'filename',[basename '_clean.set']);
 EEG = rereference(EEG,5,[],'_csd');
 
 chanlocs = EEG.chanlocs;
-load(sprintf('sortedlocs_%d.mat',length(chanlocs)));
+load('sortedlocs.mat');
 
 EEG.data = reshape(reshape(EEG.data,EEG.nbchan,EEG.pnts*EEG.trials),...
     EEG.nbchan,EEG.pnts/5,EEG.trials*5);

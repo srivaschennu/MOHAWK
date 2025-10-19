@@ -25,7 +25,7 @@ loadpaths
 changroups
 
 load(sprintf('%s/groupdata_%s.mat',filepath,listname),'allcoh','subjlist');
-load(sprintf('sortedlocs_%d.mat',size(allcoh,3)));
+load('sortedlocs.mat');
 if strcmp(param.changroup,'allchan')
     param.changroup = sprintf('%s_%d',param.changroup,size(allcoh,3));
 end

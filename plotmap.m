@@ -21,7 +21,7 @@ groupvar = grp;
 
 changroups
 
-load(sprintf('sortedlocs_%d.mat',length(chanlocs)));
+load('sortedlocs.mat');
 
 bands = {
     'delta'

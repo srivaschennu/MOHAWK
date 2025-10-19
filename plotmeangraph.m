@@ -7,7 +7,7 @@ param = finputcheck(varargin, {
     });
 
 load(sprintf('%s/groupdata_%s.mat',filepath,listname));
-load(sprintf('sortedlocs_%d.mat',size(allcoh,3)));
+load('sortedlocs.mat');
 
 groupvar = subjlist.(param.group);
 groups = unique(groupvar(~isnan(groupvar)));

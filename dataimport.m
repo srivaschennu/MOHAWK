@@ -94,6 +94,10 @@ else
 end
 EEG = pop_select(EEG,'nochannel',chanexcl);
 
+
+%PREP CHANNEL MAP DATA
+preplocs(EEG.chanlocs)
+
 %REDUCE SAMPLING RATE TO 250HZ
 if EEG.srate > 250
     fprintf('Downsampling to 250Hz.\n');

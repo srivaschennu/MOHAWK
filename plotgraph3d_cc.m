@@ -25,7 +25,7 @@ param = finputcheck(varargin, {
 
 matrix(isnan(matrix)) = 0;
 
-load(sprintf('sortedlocs_%d.mat',size(matrix,1)));
+load('sortedlocs.mat');
 
 %keep only top <plotqt>% of weights
 matrix = threshold_proportional(matrix,1-param.plotqt);
@@ -105,7 +105,7 @@ while true
     [~,chanidx] = ismember({sortedlocs.labels}',{allchanlocs.labels}');
     data2plot(chanidx) = vsize;
     
-    [~,chanlocs3d] = headplot(data2plot,sprintf('allchanlocs_%d.spl',size(matrix,1)),'electrodes','off','maplimits',[-1 1]*(1-param.cshift),'view',param.view);
+    [~,chanlocs3d] = headplot(data2plot,'allchanlocs.spl','electrodes','off','maplimits',[-1 1]*(1-param.cshift),'view',param.view);
     chanlocs3d = chanlocs3d(chanidx,:);
     
     xlim('auto'); ylim('auto'); zlim('auto');

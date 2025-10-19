@@ -29,7 +29,7 @@ EEG = pop_loadset('filename',[basename '.set'],'filepath',filepath);
 
 chanlocs = EEG.chanlocs;
 
-load(sprintf('sortedlocs_%d.mat',length(chanlocs)));
+load('sortedlocs.mat');
 
 load(savefile,'freqlist');
 

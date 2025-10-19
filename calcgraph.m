@@ -49,7 +49,7 @@ tvals = 1:-0.025:0.1;
 savename = sprintf('%s/%s_mohawk.mat',filepath,basename);
 load(savename,'matrix','chanlocs');
 
-load(sprintf('sortedlocs_%d.mat',length(chanlocs)),'chandist');
+load('sortedlocs.mat','chandist');
 chandist = chandist / max(chandist(:));
 
 graphdata{1,1} = 'clustering';

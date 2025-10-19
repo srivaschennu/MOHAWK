@@ -16,7 +16,7 @@ cfg.pad='nextpow2';
 
 stats.numrand = 200;
 
-load(sprintf('sortedlocs_%d.mat',length(chanlocs)));
+load('sortedlocs.mat');
 
 for s = 1:2
     EEG{s} = pop_loadset('filename',[basenames{s} '.set'],'filepath',filepath);
