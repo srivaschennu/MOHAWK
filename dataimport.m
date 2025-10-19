@@ -82,7 +82,7 @@ EEG = eeg_checkset(EEG);
 
 %%%% PREPROCESSING
 
-%REMOVE PERIPHERAL CHANNELS
+% REMOVE PERIPHERAL CHANNELS
 if EEG.nbchan == 128
     chanexcl = {'E1', 'E8', 'E14', 'E17', 'E21', 'E25', 'E32', 'E38', 'E43', 'E44', 'E48', 'E49', 'E56', 'E57', 'E63', 'E64', 'E68', 'E69', 'E73', 'E74', 'E81', 'E82', 'E88', 'E89', 'E94', 'E95', 'E99', 'E100', 'E107', 'E113', 'E114', 'E119', 'E120', 'E121', 'E125', 'E126', 'E127', 'E128'};
 elseif EEG.nbchan == 256
@@ -95,10 +95,10 @@ end
 EEG = pop_select(EEG,'nochannel',chanexcl);
 
 
-%PREP CHANNEL MAP DATA
+% PREP CHANNEL MAP DATA
 preplocs(EEG.chanlocs)
 
-%REDUCE SAMPLING RATE TO 250HZ
+% REDUCE SAMPLING RATE TO 250HZ
 if EEG.srate > 250
     fprintf('Downsampling to 250Hz.\n');
     EEG = pop_resample(EEG,250);
@@ -106,7 +106,7 @@ elseif EEG.srate < 250
     error('Sampling rate too low!');
 end
 
-%Filter
+% Filter
 hpfreq = 0.5;
 lpfreq = 45;
 fprintf('Low-pass filtering below %.1fHz...\n',lpfreq);
@@ -114,7 +114,7 @@ EEG = pop_eegfiltnew(EEG, 0, lpfreq);
 fprintf('High-pass filtering above %.1fHz...\n',hpfreq);
 EEG = pop_eegfiltnew(EEG, hpfreq, 0);
 
-%Remove line noise. Change line noise frequency below if needed.
+% Remove line noise. Change line noise frequency below if needed.
 fprintf('Removing line noise.\n');
 EEG = rmlinenoisemt(EEG, 50);
 
